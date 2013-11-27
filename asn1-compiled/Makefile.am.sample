@@ -1,0 +1,358 @@
+ASN_MODULE_SOURCES=	\
+	ExternalPDU.c	\
+	DialoguePDU.c	\
+	AARQ-apdu.c	\
+	AARE-apdu.c	\
+	ABRT-apdu.c	\
+	Associate-result.c	\
+	Associate-source-diagnostic.c	\
+	ABRT-source.c	\
+	TCMessage.c	\
+	Unidirectional.c	\
+	Begin.c	\
+	End.c	\
+	Continue.c	\
+	Abort.c	\
+	Reason.c	\
+	DialoguePortion.c	\
+	OrigTransactionID.c	\
+	DestTransactionID.c	\
+	P-AbortCause.c	\
+	ComponentPortion.c	\
+	Component.c	\
+	Invoke.c	\
+	Parameter.c	\
+	ReturnResult.c	\
+	ReturnError.c	\
+	Reject.c	\
+	InvokeIdType.c	\
+	OPERATION.c	\
+	ERROR.c	\
+	GeneralProblem.c	\
+	InvokeProblem.c	\
+	ReturnResultProblem.c	\
+	ReturnErrorProblem.c	\
+	ErrorCode.c	\
+	CalledPartyNumber.c	\
+	DestinationRoutingAddress.c	\
+	AlertingPattern.c	\
+	Digits.c	\
+	CorrelationID.c	\
+	CutAndPaste.c	\
+	ForwardingCondition.c	\
+	OriginalCalledPartyID.c	\
+	RouteList.c	\
+	TravellingClassMark.c	\
+	Carrier.c	\
+	ServiceInteractionIndicators.c	\
+	CallingPartyNumber.c	\
+	CallingPartysCategory.c	\
+	RedirectingPartyID.c	\
+	RedirectionInformation.c	\
+	DisplayInformation.c	\
+	ForwardCallIndicators.c	\
+	GenericNumbers.c	\
+	GenericNumber.c	\
+	Route.c	\
+	LocationNumber.c	\
+	ForwardServiceInteractionInd.c	\
+	BackwardServiceInteractionInd.c	\
+	BothwayThroughConnectionInd.c	\
+	SuspendTimer.c	\
+	ConnectedNumberTreatmentInd.c	\
+	RedirectReason.c	\
+	Integer4.c	\
+	LegType.c	\
+	ServiceInteractionIndicatorsTwo.c	\
+	INServiceCompatibilityResponse.c	\
+	Entry.c	\
+	ForwardGVNS.c	\
+	BackwardGVNS.c	\
+	ChargeNumber.c	\
+	CallSegmentID.c	\
+	LegID.c	\
+	SDSSinformation.c	\
+	CalledDirectoryNumber.c	\
+	BearerCapability.c	\
+	CallingPartySubaddress.c	\
+	ConnectionIdentifier.c	\
+	GenericIdentifier.c	\
+	QoSParameter.c	\
+	BISDNParameters.c	\
+	CUG-Interlock.c	\
+	IPRelatedInformation.c	\
+	AlternativeIdentities.c	\
+	AlternativeIdentity.c	\
+	AALParameters.c	\
+	AdditionalATMCellRate.c	\
+	AESACalledParty.c	\
+	AESACallingParty.c	\
+	AlternativeATMTrafficDescriptor.c	\
+	ATMCellRate.c	\
+	CDVTDescriptor.c	\
+	CumulativeTransitDelay.c	\
+	EndToEndTransitDelay.c	\
+	MinAcceptableATMTrafficDescriptor.c	\
+	ISDNAccessRelatedInformation.c	\
+	ScfID.c	\
+	CalledPartySubaddress.c	\
+	ConnectArg.c	\
+	FurnishChargingInformationArg.c	\
+	FCIBillingChargingCharacteristics.c	\
+	InitialDPArg.c	\
+	CallReference.c	\
+	ServiceKey.c	\
+	CallingPartyBusinessGroupID.c	\
+	CGEncountered.c	\
+	IPSSPCapabilities.c	\
+	IPAvailable.c	\
+	MiscCallInfo.c	\
+	ServiceProfileIdentifier.c	\
+	TerminalType.c	\
+	TriggerType.c	\
+	HighLayerCompatibility.c	\
+	AdditionalCallingPartyNumber.c	\
+	EventTypeBCSM.c	\
+	Cause.c	\
+	ComponentType.c	\
+	ComponentCorrelationID.c	\
+	INServiceCompatibilityIndication.c	\
+	CSAID.c	\
+	USIServiceIndicator.c	\
+	USIInformation.c	\
+	CCSS.c	\
+	VPNIndicator.c	\
+	CNInfo.c	\
+	RouteingNumber.c	\
+	CallingGeodeticLocation.c	\
+	GlobalCallReference.c	\
+	CUG-Index.c
+
+ASN_MODULE_HEADERS=	\
+	ExternalPDU.h	\
+	DialoguePDU.h	\
+	AARQ-apdu.h	\
+	AARE-apdu.h	\
+	ABRT-apdu.h	\
+	Associate-result.h	\
+	Associate-source-diagnostic.h	\
+	ABRT-source.h	\
+	TCMessage.h	\
+	Unidirectional.h	\
+	Begin.h	\
+	End.h	\
+	Continue.h	\
+	Abort.h	\
+	Reason.h	\
+	DialoguePortion.h	\
+	OrigTransactionID.h	\
+	DestTransactionID.h	\
+	P-AbortCause.h	\
+	ComponentPortion.h	\
+	Component.h	\
+	Invoke.h	\
+	Parameter.h	\
+	ReturnResult.h	\
+	ReturnError.h	\
+	Reject.h	\
+	InvokeIdType.h	\
+	OPERATION.h	\
+	ERROR.h	\
+	GeneralProblem.h	\
+	InvokeProblem.h	\
+	ReturnResultProblem.h	\
+	ReturnErrorProblem.h	\
+	ErrorCode.h	\
+	CalledPartyNumber.h	\
+	DestinationRoutingAddress.h	\
+	AlertingPattern.h	\
+	Digits.h	\
+	CorrelationID.h	\
+	CutAndPaste.h	\
+	ForwardingCondition.h	\
+	OriginalCalledPartyID.h	\
+	RouteList.h	\
+	TravellingClassMark.h	\
+	Carrier.h	\
+	ServiceInteractionIndicators.h	\
+	CallingPartyNumber.h	\
+	CallingPartysCategory.h	\
+	RedirectingPartyID.h	\
+	RedirectionInformation.h	\
+	DisplayInformation.h	\
+	ForwardCallIndicators.h	\
+	GenericNumbers.h	\
+	GenericNumber.h	\
+	Route.h	\
+	LocationNumber.h	\
+	ForwardServiceInteractionInd.h	\
+	BackwardServiceInteractionInd.h	\
+	BothwayThroughConnectionInd.h	\
+	SuspendTimer.h	\
+	ConnectedNumberTreatmentInd.h	\
+	RedirectReason.h	\
+	Integer4.h	\
+	LegType.h	\
+	ServiceInteractionIndicatorsTwo.h	\
+	INServiceCompatibilityResponse.h	\
+	Entry.h	\
+	ForwardGVNS.h	\
+	BackwardGVNS.h	\
+	ChargeNumber.h	\
+	CallSegmentID.h	\
+	LegID.h	\
+	SDSSinformation.h	\
+	CalledDirectoryNumber.h	\
+	BearerCapability.h	\
+	CallingPartySubaddress.h	\
+	ConnectionIdentifier.h	\
+	GenericIdentifier.h	\
+	QoSParameter.h	\
+	BISDNParameters.h	\
+	CUG-Interlock.h	\
+	IPRelatedInformation.h	\
+	AlternativeIdentities.h	\
+	AlternativeIdentity.h	\
+	AALParameters.h	\
+	AdditionalATMCellRate.h	\
+	AESACalledParty.h	\
+	AESACallingParty.h	\
+	AlternativeATMTrafficDescriptor.h	\
+	ATMCellRate.h	\
+	CDVTDescriptor.h	\
+	CumulativeTransitDelay.h	\
+	EndToEndTransitDelay.h	\
+	MinAcceptableATMTrafficDescriptor.h	\
+	ISDNAccessRelatedInformation.h	\
+	ScfID.h	\
+	CalledPartySubaddress.h	\
+	ConnectArg.h	\
+	FurnishChargingInformationArg.h	\
+	FCIBillingChargingCharacteristics.h	\
+	InitialDPArg.h	\
+	CallReference.h	\
+	ServiceKey.h	\
+	CallingPartyBusinessGroupID.h	\
+	CGEncountered.h	\
+	IPSSPCapabilities.h	\
+	IPAvailable.h	\
+	MiscCallInfo.h	\
+	ServiceProfileIdentifier.h	\
+	TerminalType.h	\
+	TriggerType.h	\
+	HighLayerCompatibility.h	\
+	AdditionalCallingPartyNumber.h	\
+	EventTypeBCSM.h	\
+	Cause.h	\
+	ComponentType.h	\
+	ComponentCorrelationID.h	\
+	INServiceCompatibilityIndication.h	\
+	CSAID.h	\
+	USIServiceIndicator.h	\
+	USIInformation.h	\
+	CCSS.h	\
+	VPNIndicator.h	\
+	CNInfo.h	\
+	RouteingNumber.h	\
+	CallingGeodeticLocation.h	\
+	GlobalCallReference.h	\
+	CUG-Index.h
+
+ASN_MODULE_HEADERS+=ANY.h
+ASN_MODULE_SOURCES+=ANY.c
+ASN_MODULE_HEADERS+=BOOLEAN.h
+ASN_MODULE_SOURCES+=BOOLEAN.c
+ASN_MODULE_HEADERS+=ENUMERATED.h
+ASN_MODULE_SOURCES+=ENUMERATED.c
+ASN_MODULE_HEADERS+=INTEGER.h
+ASN_MODULE_HEADERS+=NativeEnumerated.h
+ASN_MODULE_HEADERS+=IA5String.h
+ASN_MODULE_SOURCES+=IA5String.c
+ASN_MODULE_SOURCES+=INTEGER.c
+ASN_MODULE_HEADERS+=NULL.h
+ASN_MODULE_SOURCES+=NULL.c
+ASN_MODULE_SOURCES+=NativeEnumerated.c
+ASN_MODULE_HEADERS+=NativeInteger.h
+ASN_MODULE_SOURCES+=NativeInteger.c
+ASN_MODULE_HEADERS+=OBJECT_IDENTIFIER.h
+ASN_MODULE_SOURCES+=OBJECT_IDENTIFIER.c
+ASN_MODULE_HEADERS+=asn_SEQUENCE_OF.h
+ASN_MODULE_SOURCES+=asn_SEQUENCE_OF.c
+ASN_MODULE_HEADERS+=asn_SET_OF.h
+ASN_MODULE_SOURCES+=asn_SET_OF.c
+ASN_MODULE_HEADERS+=constr_CHOICE.h
+ASN_MODULE_SOURCES+=constr_CHOICE.c
+ASN_MODULE_HEADERS+=constr_SEQUENCE.h
+ASN_MODULE_SOURCES+=constr_SEQUENCE.c
+ASN_MODULE_HEADERS+=constr_SEQUENCE_OF.h
+ASN_MODULE_SOURCES+=constr_SEQUENCE_OF.c
+ASN_MODULE_HEADERS+=constr_SET_OF.h
+ASN_MODULE_SOURCES+=constr_SET_OF.c
+ASN_MODULE_HEADERS+=asn_application.h
+ASN_MODULE_HEADERS+=asn_system.h
+ASN_MODULE_HEADERS+=asn_codecs.h
+ASN_MODULE_HEADERS+=asn_internal.h
+ASN_MODULE_HEADERS+=OCTET_STRING.h
+ASN_MODULE_SOURCES+=OCTET_STRING.c
+ASN_MODULE_HEADERS+=BIT_STRING.h
+ASN_MODULE_SOURCES+=BIT_STRING.c
+ASN_MODULE_SOURCES+=asn_codecs_prim.c
+ASN_MODULE_HEADERS+=asn_codecs_prim.h
+ASN_MODULE_HEADERS+=ber_tlv_length.h
+ASN_MODULE_SOURCES+=ber_tlv_length.c
+ASN_MODULE_HEADERS+=ber_tlv_tag.h
+ASN_MODULE_SOURCES+=ber_tlv_tag.c
+ASN_MODULE_HEADERS+=ber_decoder.h
+ASN_MODULE_SOURCES+=ber_decoder.c
+ASN_MODULE_HEADERS+=der_encoder.h
+ASN_MODULE_SOURCES+=der_encoder.c
+ASN_MODULE_HEADERS+=constr_TYPE.h
+ASN_MODULE_SOURCES+=constr_TYPE.c
+ASN_MODULE_HEADERS+=constraints.h
+ASN_MODULE_SOURCES+=constraints.c
+ASN_MODULE_HEADERS+=xer_support.h
+ASN_MODULE_SOURCES+=xer_support.c
+ASN_MODULE_HEADERS+=xer_decoder.h
+ASN_MODULE_SOURCES+=xer_decoder.c
+ASN_MODULE_HEADERS+=xer_encoder.h
+ASN_MODULE_SOURCES+=xer_encoder.c
+ASN_MODULE_HEADERS+=per_support.h
+ASN_MODULE_SOURCES+=per_support.c
+ASN_MODULE_HEADERS+=per_decoder.h
+ASN_MODULE_SOURCES+=per_decoder.c
+ASN_MODULE_HEADERS+=per_encoder.h
+ASN_MODULE_SOURCES+=per_encoder.c
+ASN_MODULE_HEADERS+=per_opentype.h
+ASN_MODULE_SOURCES+=per_opentype.c
+ASN_CONVERTER_SOURCES+=converter-sample.c
+
+
+lib_LTLIBRARIES=libsomething.la
+libsomething_la_SOURCES=$(ASN_MODULE_SOURCES) $(ASN_MODULE_HEADERS)
+
+# This file may be used as an input for make(3)
+# Remove the lines below to convert it into a pure .am file
+TARGET = progname
+CFLAGS += -I.
+OBJS=${ASN_MODULE_SOURCES:.c=.o} ${ASN_CONVERTER_SOURCES:.c=.o}
+
+all: $(TARGET)
+
+$(TARGET): ${OBJS}
+	$(CC) $(CFLAGS) -o $(TARGET) ${OBJS} $(LDFLAGS) $(LIBS)
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+.c.o:
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	rm -f $(TARGET)
+	rm -f $(OBJS)
+
+regen: regenerate-from-asn1-source
+
+regenerate-from-asn1-source:
+	asn1c -fskeletons-copy ../asn1/tcap.asn
+
