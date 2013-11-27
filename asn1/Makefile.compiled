@@ -2,7 +2,7 @@
 
 LIBNAME=libtcap-asn.a
 
-CFLAGS=-g -Wall -O3
+CFLAGS=-g -Wall -O3 -fPIC
 
 lib: $(LIBNAME)
 

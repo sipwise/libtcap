@@ -3,6 +3,7 @@
 all:
 	$(MAKE) -C asn1-compiled
 	$(MAKE) -C src
+	$(MAKE) -C tests
 
 regenerate-asn1:
 	rm -f asn1-compiled/*
@@ -12,3 +13,4 @@ regenerate-asn1:
 clean:
 	$(MAKE) -C asn1-compiled lib-clean
 	$(MAKE) -C src clean
+	$(MAKE) -C tests clean
