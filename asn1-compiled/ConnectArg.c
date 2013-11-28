@@ -9,7 +9,7 @@
 static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct ConnectArg, destinationRoutingAddress),
 		(ASN_TAG_CLASS_CONTEXT | (0 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_DestinationRoutingAddress,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -18,7 +18,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 36, offsetof(struct ConnectArg, alertingPattern),
 		(ASN_TAG_CLASS_CONTEXT | (1 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_AlertingPattern,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -27,7 +27,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 35, offsetof(struct ConnectArg, correlationID),
 		(ASN_TAG_CLASS_CONTEXT | (2 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CorrelationID,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -36,7 +36,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 34, offsetof(struct ConnectArg, cutAndPaste),
 		(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CutAndPaste,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -45,7 +45,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 33, offsetof(struct ConnectArg, forwardingCondition),
 		(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ForwardingCondition,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -54,7 +54,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 32, offsetof(struct ConnectArg, iSDNAccessRelatedInformation),
 		(ASN_TAG_CLASS_CONTEXT | (5 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ISDNAccessRelatedInformation,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -63,7 +63,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 31, offsetof(struct ConnectArg, originalCalledPartyID),
 		(ASN_TAG_CLASS_CONTEXT | (6 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_OriginalCalledPartyID,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -72,7 +72,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 30, offsetof(struct ConnectArg, routeList),
 		(ASN_TAG_CLASS_CONTEXT | (7 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_RouteList,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -81,7 +81,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 29, offsetof(struct ConnectArg, scfID),
 		(ASN_TAG_CLASS_CONTEXT | (8 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ScfID,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -90,7 +90,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 28, offsetof(struct ConnectArg, travellingClassMark),
 		(ASN_TAG_CLASS_CONTEXT | (9 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_TravellingClassMark,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -99,7 +99,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 27, offsetof(struct ConnectArg, carrier),
 		(ASN_TAG_CLASS_CONTEXT | (11 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_Carrier,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -108,7 +108,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 26, offsetof(struct ConnectArg, serviceInteractionIndicators),
 		(ASN_TAG_CLASS_CONTEXT | (26 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ServiceInteractionIndicators,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -117,7 +117,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 25, offsetof(struct ConnectArg, callingPartyNumber),
 		(ASN_TAG_CLASS_CONTEXT | (27 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CallingPartyNumber,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -126,7 +126,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 24, offsetof(struct ConnectArg, callingPartysCategory),
 		(ASN_TAG_CLASS_CONTEXT | (28 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CallingPartysCategory,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -135,7 +135,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 23, offsetof(struct ConnectArg, redirectingPartyID),
 		(ASN_TAG_CLASS_CONTEXT | (29 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_RedirectingPartyID,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -144,7 +144,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 22, offsetof(struct ConnectArg, redirectionInformation),
 		(ASN_TAG_CLASS_CONTEXT | (30 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_RedirectionInformation,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -153,7 +153,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 21, offsetof(struct ConnectArg, displayInformation),
 		(ASN_TAG_CLASS_CONTEXT | (12 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_DisplayInformation,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -162,7 +162,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 20, offsetof(struct ConnectArg, forwardCallIndicators),
 		(ASN_TAG_CLASS_CONTEXT | (13 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ForwardCallIndicators,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -171,7 +171,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 19, offsetof(struct ConnectArg, genericNumbers),
 		(ASN_TAG_CLASS_CONTEXT | (14 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_GenericNumbers,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -180,7 +180,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 18, offsetof(struct ConnectArg, serviceInteractionIndicatorsTwo),
 		(ASN_TAG_CLASS_CONTEXT | (15 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ServiceInteractionIndicatorsTwo,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -198,7 +198,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 16, offsetof(struct ConnectArg, forwardGVNS),
 		(ASN_TAG_CLASS_CONTEXT | (17 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ForwardGVNS,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -207,7 +207,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 15, offsetof(struct ConnectArg, backwardGVNS),
 		(ASN_TAG_CLASS_CONTEXT | (18 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_BackwardGVNS,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -216,7 +216,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 14, offsetof(struct ConnectArg, chargeNumber),
 		(ASN_TAG_CLASS_CONTEXT | (19 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ChargeNumber,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -225,7 +225,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 13, offsetof(struct ConnectArg, callSegmentID),
 		(ASN_TAG_CLASS_CONTEXT | (20 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CallSegmentID,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -243,7 +243,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 11, offsetof(struct ConnectArg, sDSSinformation),
 		(ASN_TAG_CLASS_CONTEXT | (22 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_SDSSinformation,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -252,7 +252,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 10, offsetof(struct ConnectArg, calledDirectoryNumber),
 		(ASN_TAG_CLASS_CONTEXT | (23 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CalledDirectoryNumber,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -270,7 +270,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 8, offsetof(struct ConnectArg, calledPartySubaddress),
 		(ASN_TAG_CLASS_CONTEXT | (60 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CalledPartySubaddress,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -279,7 +279,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 7, offsetof(struct ConnectArg, connectionIdentifier),
 		(ASN_TAG_CLASS_CONTEXT | (61 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_ConnectionIdentifier,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -288,7 +288,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 6, offsetof(struct ConnectArg, genericIdentifier),
 		(ASN_TAG_CLASS_CONTEXT | (62 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_GenericIdentifier,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -297,7 +297,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 5, offsetof(struct ConnectArg, qOSParameter),
 		(ASN_TAG_CLASS_CONTEXT | (63 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_QoSParameter,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -306,7 +306,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 4, offsetof(struct ConnectArg, bISDNParameters),
 		(ASN_TAG_CLASS_CONTEXT | (64 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_BISDNParameters,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -315,7 +315,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 3, offsetof(struct ConnectArg, cug_Interlock),
 		(ASN_TAG_CLASS_CONTEXT | (31 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_CUG_Interlock,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -324,7 +324,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 2, offsetof(struct ConnectArg, cug_OutgoingAccess),
 		(ASN_TAG_CLASS_CONTEXT | (32 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_NULL,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
@@ -333,7 +333,7 @@ static asn_TYPE_member_t asn_MBR_ConnectArg_1[] = {
 		},
 	{ ATF_POINTER, 1, offsetof(struct ConnectArg, ipRelatedInformation),
 		(ASN_TAG_CLASS_CONTEXT | (33 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_IPRelatedInformation,
 		0,	/* Defer constraints checking to the member type */
 		0,	/* PER is not compiled, use -gen-PER */
