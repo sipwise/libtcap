@@ -3,9 +3,11 @@
 
 
 #include "TCMessage.h"
+#include "Invoke.h"
 
 
 TCMessage_t *tcap_decode(const char *buf, size_t len);
+void *inap_decode(Invoke_t *invoke);
 
 
 #endif
