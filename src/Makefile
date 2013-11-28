@@ -2,7 +2,7 @@ LIBNAME=libtcap
 VERSION=0
 
 CC=gcc
-CFLAGS=-I../asn1-compiled -I../include -g -Wall -O3 -fPIC
+CFLAGS+=-I../asn1-compiled -I../include -g -Wall -O3 -fPIC
 LDFLAGS=-O3 -shared -fPIC -Wl,-soname,$(LIBNAME).so.$(VERSION)
 
 OBJS=tcap.o
@@ -17,7 +17,7 @@ $(LIBNAME).so.$(VERSION): $(OBJS) ../asn1-compiled/libtcap-asn.a
 	$(CC) -o $@ $(OBJS) ../asn1-compiled/libtcap-asn.a $(LDFLAGS)
 
 $(LIBNAME).so: $(LIBNAME).so.$(VERSION)
-	ln -s $(LIBNAME).so.$(VERSION) $(LIBNAME).so
+	ln -fs $(LIBNAME).so.$(VERSION) $(LIBNAME).so
 
 clean:
 	rm -f $(OBJS)
