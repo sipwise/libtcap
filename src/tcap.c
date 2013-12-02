@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#include <string.h>
 
 #include "TCMessage.h"
 #include "Invoke.h"
@@ -71,4 +72,47 @@ void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **type) {
 nothing:
 	*type = NULL;
 	return NULL;
+}
+
+int tcap_extract(const char *buf, size_t len, const char *spec) {
+	void *element;
+	asn_TYPE_descriptor_t *type;
+	const char *c;
+	const char *token;
+	int token_len, i;
+	asn_TYPE_member_t *member;
+
+	element = tcap_decode(buf, len);
+	if (!element)
+		goto error;
+	type = &asn_DEF_TCMessage;
+
+	token = spec;
+
+	while (1) {
+		c = strchr(token, '.');
+		if (!c)
+			goto done;
+		token_len = c - spec;
+
+		/* has to be a CHOICE, SET or SEQUENCE */
+		for (i = 0; i < type->elements_count; i++) {
+			member = &type->elements[i];
+			if (!strncmp(token, member->name, token_len))
+				goto found_member;
+		}
+
+		goto error;
+
+found_member:
+		type = member->type;
+		element = *((void **) (element + member->memb_offset));
+
+		token = c + 1;
+	}
+
+done:
+	return 0;
+error:
+	return -1;
 }

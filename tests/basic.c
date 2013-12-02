@@ -89,5 +89,8 @@ int main() {
 		}
 	}
 
+	i = tcap_extract(tcap, tcap_len, "end.components");
+	printf("extract: %i\n", i);
+
 	return 0;
 }
