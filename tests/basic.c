@@ -15,6 +15,7 @@ int main() {
 	Component_t *component;
 	int i;
 	void *arg;
+	asn_TYPE_descriptor_t *type;
 
 	tcm = tcap_decode(tcap, tcap_len);
 
@@ -65,8 +66,8 @@ int main() {
 
 				case Component_PR_invoke:
 					printf("invoke\n");
-					arg = inap_decode(&component->choice.invoke);
-					printf("arg: %p\n", arg);
+					arg = inap_decode(&component->choice.invoke, &type);
+					printf("arg: type %s -> %p\n", type ? type->name : "n/a", arg);
 					break;
 
 				case Component_PR_returnResultLast:
