@@ -5,11 +5,16 @@
 #include <sys/types.h>
 #include <string.h>
 
+#include "asn_SET_OF.h"
+#include "asn_SEQUENCE_OF.h"
+#include "constr_CHOICE.h"
+
 #include "TCMessage.h"
 #include "Invoke.h"
 #include "InitialDPArg.h"
 #include "ConnectArg.h"
 #include "FurnishChargingInformationArg.h"
+#include "INTEGER.h"
 
 
 
@@ -74,13 +79,15 @@ nothing:
 	return NULL;
 }
 
-int tcap_extract(const char *buf, size_t len, const char *spec) {
+int tcap_extract(const char *buf, size_t len, const char *spec, void *out) {
 	void *element;
 	asn_TYPE_descriptor_t *type;
 	const char *c;
 	const char *token;
-	int token_len, i;
+	int token_len, i, num;
 	asn_TYPE_member_t *member;
+	asn_anonymous_set_ *list;
+	asn_CHOICE_specifics_t *choice_spec;
 
 	element = tcap_decode(buf, len);
 	if (!element)
@@ -92,9 +99,40 @@ int tcap_extract(const char *buf, size_t len, const char *spec) {
 	while (1) {
 		c = strchr(token, '.');
 		if (!c)
-			goto done;
-		token_len = c - spec;
+			token_len = strlen(token);
+		else
+			token_len = c - token;
 
+		if (token_len <= 0)
+			goto error;
+		if (type->elements_count <= 0)
+			goto error; /* ? */
+
+		/* check if we have a number */
+		for (i = 0; i < token_len; i++) {
+			if (token[i] < '0' || token[i] > '9')
+				goto word;
+		}
+
+		/* we should have an array here */
+		num = atoi(token);
+		if (num < 0)
+			goto error;
+
+		/* single element with empty name == array ??? */
+		if (type->elements_count > 1
+				|| type->elements[0].name[0] != '\0')
+			goto error;
+
+		list = _A_SET_FROM_VOID(element);
+		if (num >= list->count)
+			goto error;
+
+		element = list->array[num];
+		type = type->elements[0].type;
+		goto found_element;
+
+word:
 		/* has to be a CHOICE, SET or SEQUENCE */
 		for (i = 0; i < type->elements_count; i++) {
 			member = &type->elements[i];
@@ -105,14 +143,41 @@ int tcap_extract(const char *buf, size_t len, const char *spec) {
 		goto error;
 
 found_member:
+		/* if this is a CHOICE, we need to confirm the member. we use the
+		 * print function pointer to determine. i is the struct index */
+		if (type->print_struct == CHOICE_print) {
+			choice_spec = type->specifics;
+			if (choice_spec->pres_size != sizeof(int))
+				goto error;
+			num = *((int *) element + choice_spec->pres_offset);
+			if (num != i + 1)
+				goto error;
+		}
+
 		type = member->type;
-		element = *((void **) (element + member->memb_offset));
+		element = element + member->memb_offset;
+		if (member->flags & ATF_POINTER)
+			element = *((void **) element);
+
+found_element:
+		if (!c)
+			break;
 
 		token = c + 1;
 	}
 
-done:
+	/* found our target value, check for primitive types */
+	if (type->elements_count)
+		goto out;
+
+	if (type == &asn_DEF_INTEGER) {
+		if (asn_INTEGER2long(element, out))
+			goto error;
+	}
+
+out:
 	return 0;
+
 error:
 	return -1;
 }

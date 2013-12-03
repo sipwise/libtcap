@@ -16,6 +16,7 @@ int main() {
 	int i;
 	void *arg;
 	asn_TYPE_descriptor_t *type;
+	long l;
 
 	tcm = tcap_decode(tcap, tcap_len);
 
@@ -89,8 +90,8 @@ int main() {
 		}
 	}
 
-	i = tcap_extract(tcap, tcap_len, "end.components");
-	printf("extract: %i\n", i);
+	i = tcap_extract(tcap, tcap_len, "end.components.1.invoke.opCode.localValue", &l);
+	printf("extract: returned %i, value %li\n", i, l);
 
 	return 0;
 }
