@@ -95,6 +95,8 @@ int main() {
 
 	i = inap_extract(tcap, tcap_len, "ConnectArg", NULL);
 	printf("inap_extract ConnectArg: returned %i\n", i);
+	i = inap_extract(tcap, tcap_len, "ConnectArg.cutAndPaste", &l);
+	printf("inap_extract ConnectArg: returned %i, value %li\n", i, l);
 
 	return 0;
 }

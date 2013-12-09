@@ -185,6 +185,10 @@ found_element:
 		if (asn_INTEGER2long(element, out))
 			goto error;
 	}
+	else if (!type->specifics) {
+		/* primitive integer */
+		*((long *) out) = *((long *) element);
+	}
 
 out:
 	return 0;
