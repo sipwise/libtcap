@@ -102,7 +102,7 @@ static inline int next_token_2(const char **token, const char **c) {
 	return 0;
 }
 
-int cb(const void *buf, size_t s, void *app_key) {
+static int cb(const void *buf, size_t s, void *app_key) {
 	struct output_buffer *out = app_key;
 
 	if (out->buf_size - out->used < s)
@@ -189,13 +189,9 @@ found_element:
 			break;
 	}
 
-	/* found our target value, check for primitive types */
-	if (type->elements_count)
-		goto out;
+	if (type->print_struct && out)
+		type->print_struct(type, element, 0, cb, out);
 
-	type->print_struct(type, element, 0, cb, out);
-
-out:
 	return 0;
 
 error:

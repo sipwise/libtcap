@@ -18,15 +18,17 @@ int main() {
 	i = tcap_extract(tcap, tcap_len, "end.components.1.invoke.opCode.localValue", &out);
 	printf("tcap_extract opcode: returned %i, value %.*s\n", i, (int) out.used, out.buf);
 
-	i = inap_extract(tcap, tcap_len, "ConnectArg", NULL);
-	printf("inap_extract ConnectArg: returned %i\n", i);
+	OUTPUT_BUFFER_INIT(&out, buf);
+	i = inap_extract(tcap, tcap_len, "ConnectArg", &out);
+	printf("inap_extract ConnectArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
 
 	OUTPUT_BUFFER_INIT(&out, buf);
 	i = inap_extract(tcap, tcap_len, "ConnectArg.cutAndPaste", &out);
-	printf("inap_extract ConnectArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+	printf("inap_extract ConnectArg.cutAndPaste: returned %i, value %.*s\n", i, (int) out.used, out.buf);
 
-	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress", NULL);
-	printf("inap_extract ConnectArg.destinationRoutingAddress: returned %i\n", i);
+	OUTPUT_BUFFER_INIT(&out, buf);
+	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress", &out);
+	printf("inap_extract ConnectArg.destinationRoutingAddress: returned %i, value %.*s\n", i, (int) out.used, out.buf);
 
 	OUTPUT_BUFFER_INIT(&out, buf);
 	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress.0", &out);
