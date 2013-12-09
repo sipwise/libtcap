@@ -91,7 +91,10 @@ int main() {
 	}
 
 	i = tcap_extract(tcap, tcap_len, "end.components.1.invoke.opCode.localValue", &l);
-	printf("extract: returned %i, value %li\n", i, l);
+	printf("tcap_extract opcode: returned %i, value %li\n", i, l);
+
+	i = inap_extract(tcap, tcap_len, "ConnectArg", NULL);
+	printf("inap_extract ConnectArg: returned %i\n", i);
 
 	return 0;
 }

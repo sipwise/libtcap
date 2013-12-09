@@ -15,6 +15,8 @@
 #include "ConnectArg.h"
 #include "FurnishChargingInformationArg.h"
 #include "INTEGER.h"
+#include "ComponentPortion.h"
+#include "Component.h"
 
 
 
@@ -79,32 +81,43 @@ nothing:
 	return NULL;
 }
 
-int tcap_extract(const char *buf, size_t len, const char *spec, void *out) {
-	void *element;
-	asn_TYPE_descriptor_t *type;
-	const char *c;
-	const char *token;
+static inline int next_token_1(const char **token, int *token_len, const char **c) {
+	*c = strchr(*token, '.');
+	if (!*c)
+		*token_len = strlen(*token);
+	else
+		*token_len = *c - *token;
+
+	if (*token_len <= 0)
+		return -1;
+
+	return 0;
+}
+
+static inline int next_token_2(const char **token, const char **c) {
+	if (!*c)
+		return -1;
+
+	*token = *c + 1;
+	return 0;
+}
+
+static int asn1_extract(const char *spec, void *out, asn_TYPE_descriptor_t *type, void *element) {
+	const char *token, *c;
 	int token_len, i, num;
 	asn_TYPE_member_t *member;
 	asn_anonymous_set_ *list;
 	asn_CHOICE_specifics_t *choice_spec;
 
-	element = tcap_decode(buf, len);
 	if (!element)
 		goto error;
-	type = &asn_DEF_TCMessage;
 
 	token = spec;
 
 	while (1) {
-		c = strchr(token, '.');
-		if (!c)
-			token_len = strlen(token);
-		else
-			token_len = c - token;
-
-		if (token_len <= 0)
+		if (next_token_1(&token, &token_len, &c))
 			goto error;
+
 		if (type->elements_count <= 0)
 			goto error; /* ? */
 
@@ -160,10 +173,8 @@ found_member:
 			element = *((void **) element);
 
 found_element:
-		if (!c)
+		if (next_token_2(&token, &c))
 			break;
-
-		token = c + 1;
 	}
 
 	/* found our target value, check for primitive types */
@@ -174,6 +185,88 @@ found_element:
 		if (asn_INTEGER2long(element, out))
 			goto error;
 	}
+
+out:
+	return 0;
+
+error:
+	return -1;
+}
+
+
+
+int tcap_extract(const char *buf, size_t len, const char *spec, void *out) {
+	return asn1_extract(spec, out, &asn_DEF_TCMessage, tcap_decode(buf, len));
+}
+
+
+
+int inap_extract(const char *buf, size_t len, const char *spec, void *out) {
+	TCMessage_t *tcm;
+	ComponentPortion_t *cp;
+	Component_t *cmp;
+	Invoke_t *inv;
+	const char *token, *c;
+	int token_len, i;
+	void *parameter;
+	asn_TYPE_descriptor_t *type;
+
+	tcm = tcap_decode(buf, len);
+	if (!tcm)
+		goto error;
+
+	switch (tcm->present) {
+		case TCMessage_PR_unidirectional:
+			cp = &tcm->choice.unidirectional.components;
+			break;
+
+		case TCMessage_PR_begin:
+			cp = tcm->choice.begin.components;
+			break;
+
+		case TCMessage_PR_end:
+			cp = tcm->choice.end.components;
+			break;
+
+		case TCMessage_PR_continue:
+			cp = tcm->choice.Continue.components;
+			break;
+
+		default:
+			goto error;
+	}
+
+	if (!cp)
+		goto error;
+
+	token = spec;
+
+	/* first token is the type we're looking for */
+
+	if (next_token_1(&token, &token_len, &c))
+		goto error;
+
+	for (i = 0; i < cp->list.count; i++) {
+		cmp = cp->list.array[i];
+		if (cmp->present != Component_PR_invoke)
+			continue;
+		inv = &cmp->choice.invoke;
+
+		parameter = inap_decode(inv, &type);
+		if (!parameter)
+			continue;
+
+		if (!strncmp(type->name, token, token_len))
+			goto found_parameter;
+	}
+
+	goto error;
+
+found_parameter:
+	if (next_token_2(&token, &c))
+		goto out;
+
+	return asn1_extract(token, out, type, parameter);
 
 out:
 	return 0;
