@@ -1,6 +1,3 @@
-LIBNAME=libtcap
-VERSION=0
-
 CC=gcc
 CFLAGS+=-I../asn1-compiled -I../include -g -Wall -O3 -fPIC
 LDFLAGS=-O3 -shared -fPIC -Wl,-soname,$(LIBNAME).so.$(VERSION)
@@ -11,15 +8,15 @@ OBJS=tcap.o
 .PHONY: all clean
 
 
-all: $(LIBNAME).so
+all: $(LIBSO)
 
-$(LIBNAME).so.$(VERSION): $(OBJS) ../asn1-compiled/libtcap-asn.a
+$(LIBSOVER): $(OBJS) ../asn1-compiled/libtcap-asn.a
 	$(CC) -o $@ $(OBJS) ../asn1-compiled/libtcap-asn.a $(LDFLAGS)
 
-$(LIBNAME).so: $(LIBNAME).so.$(VERSION)
-	ln -fs $(LIBNAME).so.$(VERSION) $(LIBNAME).so
+$(LIBSO): $(LIBSOVER)
+	ln -fs $(LIBSOVER) $(LIBSO)
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(LIBNAME).so
-	rm -f $(LIBNAME).so.$(VERSION)
+	rm -f $(LIBSO)
+	rm -f $(LIBSOVER)

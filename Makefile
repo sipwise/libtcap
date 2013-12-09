@@ -1,8 +1,9 @@
-LIBNAME=libtcap
-VERSION=0
+export LIBNAME=libtcap
+export VERSION=0
+export LIBSO=$(LIBNAME).so
+export LIBSOVER=$(LIBNAME).so.$(VERSION)
 
 LIBDIR=lib
-LIB=src/$(LIBNAME).so.$(VERSION)
 HDR=include/tcap
 
 DESTDIR?=/usr/local
@@ -26,7 +27,7 @@ install: all
 	mkdir -p $(DESTDIR)/$(HDR)
 	cp include/*.h $(DESTDIR)/$(HDR)
 	mkdir -p $(DESTDIR)/$(LIBDIR)
-	cp $(LIB) $(DESTDIR)/$(LIBDIR)/$(LIBNAME).so.$(VERSION)
-	ln -s $(LIBNAME).so.$(VERSION) $(DESTDIR)/$(LIBDIR)/$(LIBNAME).so
+	cp src/$(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSOVER)
+	ln -s $(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSO)
 
-.PHONY: all regenerate-asn1 clean
+.PHONY: all regenerate-asn1 clean install
