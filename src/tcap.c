@@ -67,6 +67,8 @@ void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **type) {
 		goto nothing;
 
 	*type = opcode_type_map[opcode];
+	if (!*type)
+		goto nothing;
 
 	rv = ANY_to_type(invoke->parameter, *type, &arg);
 
@@ -201,7 +203,17 @@ error:
 
 
 int tcap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out) {
-	return asn1_extract(spec, out, &asn_DEF_TCMessage, tcap_decode(buf, len));
+	TCMessage_t *tcm;
+	int ret;
+
+	tcm = tcap_decode(buf, len);
+	if (!tcm)
+		return -1;
+
+	ret = asn1_extract(spec, out, &asn_DEF_TCMessage, tcm);
+
+	asn_DEF_TCMessage.free_struct(&asn_DEF_TCMessage, tcm, 0);
+	return ret;
 }
 
 
@@ -269,13 +281,17 @@ int inap_extract(const char *buf, size_t len, const char *spec, struct output_bu
 
 found_parameter:
 	if (next_token_2(&token, &c))
-		goto out;
+		i = 0;
+	else
+		i = asn1_extract(token, out, type, parameter);
 
-	return asn1_extract(token, out, type, parameter);
+	asn_DEF_TCMessage.free_struct(&asn_DEF_TCMessage, tcm, 0);
+	type->free_struct(type, parameter, 0);
 
-out:
-	return 0;
+	return i;
 
 error:
+	if (tcm)
+		asn_DEF_TCMessage.free_struct(&asn_DEF_TCMessage, tcm, 0);
 	return -1;
 }
