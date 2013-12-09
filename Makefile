@@ -1,4 +1,11 @@
-.PHONY: all regenerate-asn1 clean
+LIBNAME=libtcap
+VERSION=0
+
+LIBDIR=lib
+LIB=src/$(LIBNAME).so.$(VERSION)
+HDR=include/tcap
+
+DESTDIR?=/usr/local
 
 all:
 	$(MAKE) -C asn1-compiled
@@ -14,3 +21,12 @@ clean:
 	$(MAKE) -C asn1-compiled lib-clean
 	$(MAKE) -C src clean
 	$(MAKE) -C tests clean
+
+install: all
+	mkdir -p $(DESTDIR)/$(HDR)
+	cp include/*.h $(DESTDIR)/$(HDR)
+	mkdir -p $(DESTDIR)/$(LIBDIR)
+	cp $(LIB) $(DESTDIR)/$(LIBDIR)/$(LIBNAME).so.$(VERSION)
+	ln -s $(LIBNAME).so.$(VERSION) $(DESTDIR)/$(LIBDIR)/$(LIBNAME).so
+
+.PHONY: all regenerate-asn1 clean
