@@ -102,7 +102,19 @@ static inline int next_token_2(const char **token, const char **c) {
 	return 0;
 }
 
-static int asn1_extract(const char *spec, void *out, asn_TYPE_descriptor_t *type, void *element) {
+int cb(const void *buf, size_t s, void *app_key) {
+	struct output_buffer *out = app_key;
+
+	if (out->buf_size - out->used < s)
+		return -1;
+	memcpy(out->buf + out->used, buf, s);
+	out->used += s;
+	return 0;
+}
+
+static int asn1_extract(const char *spec, struct output_buffer *out, asn_TYPE_descriptor_t *type,
+		void *element)
+{
 	const char *token, *c;
 	int token_len, i, num;
 	asn_TYPE_member_t *member;
@@ -181,14 +193,7 @@ found_element:
 	if (type->elements_count)
 		goto out;
 
-	if (type == &asn_DEF_INTEGER) {
-		if (asn_INTEGER2long(element, out))
-			goto error;
-	}
-	else if (!type->specifics) {
-		/* primitive integer */
-		*((long *) out) = *((long *) element);
-	}
+	type->print_struct(type, element, 0, cb, out);
 
 out:
 	return 0;
@@ -199,13 +204,13 @@ error:
 
 
 
-int tcap_extract(const char *buf, size_t len, const char *spec, void *out) {
+int tcap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out) {
 	return asn1_extract(spec, out, &asn_DEF_TCMessage, tcap_decode(buf, len));
 }
 
 
 
-int inap_extract(const char *buf, size_t len, const char *spec, void *out) {
+int inap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out) {
 	TCMessage_t *tcm;
 	ComponentPortion_t *cp;
 	Component_t *cmp;

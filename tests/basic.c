@@ -10,93 +10,27 @@ const int tcap_len = sizeof(tcap) - 1;
 
 
 int main() {
-	TCMessage_t *tcm;
-	ComponentPortion_t *components = 0;
-	Component_t *component;
 	int i;
-	void *arg;
-	asn_TYPE_descriptor_t *type;
-	long l;
+	struct output_buffer out;
+	char buf[256];
 
-	tcm = tcap_decode(tcap, tcap_len);
-
-	printf("TCMessage: %p\n", tcm);
-
-	switch (tcm->present) {
-		case TCMessage_PR_NOTHING:
-			printf("nothing\n");
-			break;
-
-		case TCMessage_PR_unidirectional:
-			printf("unidirectional\n");
-			components = &tcm->choice.unidirectional.components;
-			break;
-
-		case TCMessage_PR_begin:
-			printf("begin\n");
-			components = tcm->choice.begin.components;
-			break;
-
-		case TCMessage_PR_end:
-			printf("end\n");
-			components = tcm->choice.end.components;
-			break;
-
-		case TCMessage_PR_continue:
-			printf("continue\n");
-			components = tcm->choice.Continue.components;
-			break;
-
-		case TCMessage_PR_abort:
-			printf("abort\n");
-			break;
-	}
-
-	if (components) {
-		printf("%i components\n", components->list.count);
-
-		for (i = 0; i < components->list.count; i++) {
-			printf("Component #%i\n", i);
-
-			component = components->list.array[i];
-
-			switch (component->present) {
-				case Component_PR_NOTHING:
-					printf("nothing\n");
-					break;
-
-				case Component_PR_invoke:
-					printf("invoke\n");
-					arg = inap_decode(&component->choice.invoke, &type);
-					printf("arg: type %s -> %p\n", type ? type->name : "n/a", arg);
-					break;
-
-				case Component_PR_returnResultLast:
-					printf("returnResultLast\n");
-					break;
-
-				case Component_PR_returnError:
-					printf("returnError\n");
-					break;
-
-				case Component_PR_reject:
-					printf("reject\n");
-					break;
-
-				case Component_PR_returnResultNotLast:
-					printf("returnResultNotLast\n");
-					break;
-			}
-		}
-	}
-
-	i = tcap_extract(tcap, tcap_len, "end.components.1.invoke.opCode.localValue", &l);
-	printf("tcap_extract opcode: returned %i, value %li\n", i, l);
+	OUTPUT_BUFFER_INIT(&out, buf);
+	i = tcap_extract(tcap, tcap_len, "end.components.1.invoke.opCode.localValue", &out);
+	printf("tcap_extract opcode: returned %i, value %.*s\n", i, (int) out.used, out.buf);
 
 	i = inap_extract(tcap, tcap_len, "ConnectArg", NULL);
 	printf("inap_extract ConnectArg: returned %i\n", i);
-	i = inap_extract(tcap, tcap_len, "ConnectArg.cutAndPaste", &l);
-	printf("inap_extract ConnectArg: returned %i, value %li\n", i, l);
+
+	OUTPUT_BUFFER_INIT(&out, buf);
+	i = inap_extract(tcap, tcap_len, "ConnectArg.cutAndPaste", &out);
+	printf("inap_extract ConnectArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+
+	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress", NULL);
+	printf("inap_extract ConnectArg.destinationRoutingAddress: returned %i\n", i);
+
+	OUTPUT_BUFFER_INIT(&out, buf);
+	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress.0", &out);
+	printf("inap_extract ConnectArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
 
 	return 0;
 }
