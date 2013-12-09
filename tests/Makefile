@@ -9,7 +9,7 @@ basic: basic.c ../src/libtcap.so.0
 	cd .. && make all
 
 unit_test: unit_test.c
-	gcc -Wall -g unit_test.c -o unit_test -lcmocka
+	gcc -Wall -g -I ../include -I../asn1-compiled unit_test.c -o unit_test -L../src -lcmocka -ltcap
 
 clean:
 	rm -f basic unit_test
