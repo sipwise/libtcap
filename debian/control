@@ -1,0 +1,23 @@
+Source: ngcp-libtcap
+Section: admin
+Priority: extra
+Maintainer: Sipwise Development Team <support@sipwise.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: http://sipwise.com/
+
+Package: ngcp-libtcap0
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: library for handling ASN.1-coded TCAP and INAP messages
+ This library provides support for decoding  ASN.1-coded TCAP and
+ INAP messages and extracting values out of them.
+
+Package: ngcp-libtcap-dev
+Architecture: any
+Section: libdevel
+Depends: ngcp-libtcap0 (= ${binary:Version}), ${misc:Depends}
+Description: Headers for ngcp-libtcap0
+ Library providing handling ASN.1-coded TCAP and INAP messages
+ .
+ This package provides the header files.
