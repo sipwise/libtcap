@@ -26,6 +26,7 @@ clean:
 install: all
 	mkdir -p $(DESTDIR)/$(HDR)
 	cp include/*.h $(DESTDIR)/$(HDR)
+	cp asn1-compiled/*.h $(DESTDIR)/$(HDR)
 	mkdir -p $(DESTDIR)/$(LIBDIR)
 	cp src/$(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSOVER)
 	ln -s $(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSO)
