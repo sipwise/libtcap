@@ -5,17 +5,17 @@ LDFLAGS+=-L../src -L../asn1-compiled
 
 all: basic unit_test wrap_tcap_decode
 
-basic: basic.c ../src/libtcap.so.0
-	gcc -o $@ $(CFLAGS) basic.c $(LDFLAGS) ../src/tcap.o ../asn1-compiled/libtcap-asn.a
-
-../src/tcap.o: ../src/tcap.c
+tcap.o: ../src/tcap.c
 	gcc -o $@ $(CFLAGS) -c ../src/tcap.c
 
-unit_test: unit_test.c
-	gcc -o $@ $(CFLAGS) unit_test.c $(LDFLAGS) -lcmocka ../src/tcap.o ../asn1-compiled/libtcap-asn.a
+basic: basic.c tcap.o
+	gcc -o $@ $(CFLAGS) basic.c $(LDFLAGS) tcap.o ../asn1-compiled/libtcap-asn.a
 
-wrap_tcap_decode: wrap_tcap_decode.c
-	gcc -o $@ $(CFLAGS) $(LDFLAGS) -lcmocka -Wl,-wrap,cap_decode ../src/tcap.o ../asn1-compiled/libtcap-asn.a wrap_tcap_decode.c
+unit_test: unit_test.c
+	gcc -o $@ $(CFLAGS) unit_test.c $(LDFLAGS) -lcmocka tcap.o ../asn1-compiled/libtcap-asn.a
+
+wrap_tcap_decode: wrap_tcap_decode.c tcap.o
+	gcc -o $@ $(CFLAGS) $(LDFLAGS) -lcmocka -Wl,-wrap,tcap_decode -Wl,-undefined,tcap_decode tcap.o ../asn1-compiled/libtcap-asn.a wrap_tcap_decode.c
 
 clean:
-	rm -f basic unit_test wrap_tcap_decode
+	rm -f tcap.o basic unit_test wrap_tcap_decode
