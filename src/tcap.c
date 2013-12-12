@@ -295,3 +295,104 @@ error:
 		asn_DEF_TCMessage.free_struct(&asn_DEF_TCMessage, tcm, 0);
 	return -1;
 }
+
+
+static inline char phone_digit(unsigned char d) {
+	switch (d) {
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			return '0' + d;
+		case 11:
+			return '*';
+		case 12:
+			return '#';
+		case 15:
+			return 'F';
+		default:
+			return '?';
+	}
+}
+
+
+int isup_convert_number(const char *inp, int inlen, char *out) {
+	const char *pi;
+	unsigned char raw[32] = "", *pr;
+	int rawlen, odd;
+
+	if (inlen < 0)
+		inlen = strlen(inp);
+
+	if (inlen < 5) /* min: 2 octets */
+		goto error;
+	if (inlen > 92) /* 31 * 2 + 30 */
+		goto error;
+
+	pr = raw;
+	pi = inp;
+	while (1) {
+		if (!*pi)
+			break;
+
+		if (*pi >= '0' && *pi <= '9')
+			*pr = (*pi - '0') << 4;
+		else if (*pi >= 'A' && *pi <= 'F')
+			*pr = (*pi - 'A' + 10) << 4;
+		else if (*pi >= 'a' && *pi <= 'f')
+			*pr = (*pi - 'a' + 10) << 4;
+		else
+			goto error;
+
+		pi++;
+
+		if (*pi >= '0' && *pi <= '9')
+			*pr |= (*pi - '0');
+		else if (*pi >= 'A' && *pi <= 'F')
+			*pr |= (*pi - 'A' + 10);
+		else if (*pi >= 'a' && *pi <= 'f')
+			*pr |= (*pi - 'a' + 10);
+		else
+			goto error;
+
+		pr++;
+
+		pi++;
+		if (!*pi)
+			break;
+		if (*pi != ' ')
+			goto error;
+		pi++;
+	}
+
+	rawlen = pr - raw;
+
+	odd = raw[0] & 0x80;
+	if (odd && rawlen == 2)
+		goto error;
+
+	pr = raw + 2;
+	rawlen -= 2;
+	while (rawlen) {
+		*(out++) = phone_digit(*pr & 0xf);
+		*(out++) = phone_digit(*pr >> 4);
+		rawlen--;
+		pr++;
+	}
+
+	if (odd)
+		out--;
+
+	*out = 0;
+
+	return 0;
+
+error:
+	return -1;
+}
