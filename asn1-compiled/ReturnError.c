@@ -17,7 +17,7 @@ static asn_TYPE_member_t asn_MBR_ReturnError_1[] = {
 		"invokeID"
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct ReturnError, errorCode),
-		-1 /* Ambiguous tag (CHOICE?) */,
+		(ASN_TAG_CLASS_UNIVERSAL | (2 << 2)),
 		0,
 		&asn_DEF_ErrorCode,
 		0,	/* Defer constraints checking to the member type */
@@ -39,15 +39,14 @@ static ber_tlv_tag_t asn_DEF_ReturnError_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_TYPE_tag2member_t asn_MAP_ReturnError_tag2el_1[] = {
-    { (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)), 0, 0, 0 }, /* invokeID at 167 */
-    { (ASN_TAG_CLASS_PRIVATE | (19 << 2)), 1, 0, 0 }, /* nationaler at 275 */
-    { (ASN_TAG_CLASS_PRIVATE | (20 << 2)), 1, 0, 0 } /* privateer at 277 */
+    { (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)), 0, 0, 1 }, /* invokeID at 167 */
+    { (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)), 1, -1, 0 } /* errorCode at 168 */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_ReturnError_specs_1 = {
 	sizeof(struct ReturnError),
 	offsetof(struct ReturnError, _asn_ctx),
 	asn_MAP_ReturnError_tag2el_1,
-	3,	/* Count of tags in the map */
+	2,	/* Count of tags in the map */
 	0, 0, 0,	/* Optional elements (not needed) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */

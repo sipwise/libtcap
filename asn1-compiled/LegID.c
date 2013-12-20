@@ -27,8 +27,8 @@ static asn_TYPE_member_t asn_MBR_LegID_1[] = {
 		},
 };
 static asn_TYPE_tag2member_t asn_MAP_LegID_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* sendingSideID at 472 */
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* receivingSideID at 474 */
+    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* sendingSideID at 473 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* receivingSideID at 475 */
 };
 static asn_CHOICE_specifics_t asn_SPC_LegID_specs_1 = {
 	sizeof(struct LegID),

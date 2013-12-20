@@ -270,11 +270,12 @@ ReturnErrorProblem	::=	INTEGER {		unrecognizedInvokeID (0),
 								mistypedParameter (4) }
 
 
-ErrorCode ::= CHOICE
-			{
-				nationaler 		[PRIVATE 19] IMPLICIT INTEGER (-32768..32767),
-				privateer 		[PRIVATE 20] IMPLICIT INTEGER
-			}
+-- ErrorCode ::= CHOICE
+-- 			{
+-- 				nationaler 		[PRIVATE 19] IMPLICIT INTEGER (-32768..32767),
+-- 				privateer 		[PRIVATE 20] IMPLICIT INTEGER
+-- 			}
+ErrorCode ::= INTEGER
 
 
 

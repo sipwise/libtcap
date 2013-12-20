@@ -114,9 +114,9 @@ static asn_TYPE_member_t asn_MBR_BearerCapability_1[] = {
 		},
 };
 static asn_TYPE_tag2member_t asn_MAP_BearerCapability_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* bearerCap at 483 */
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* tmr at 484 */
-    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 } /* broadbandBearerCap at 486 */
+    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* bearerCap at 484 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* tmr at 485 */
+    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 } /* broadbandBearerCap at 487 */
 };
 static asn_CHOICE_specifics_t asn_SPC_BearerCapability_specs_1 = {
 	sizeof(struct BearerCapability),

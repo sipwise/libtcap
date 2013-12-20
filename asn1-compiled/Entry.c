@@ -27,8 +27,8 @@ static asn_TYPE_member_t asn_MBR_Entry_1[] = {
 		},
 };
 static asn_TYPE_tag2member_t asn_MAP_Entry_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* agreements at 462 */
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* networkSpecific at 464 */
+    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* agreements at 463 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* networkSpecific at 465 */
 };
 static asn_CHOICE_specifics_t asn_SPC_Entry_specs_1 = {
 	sizeof(struct Entry),

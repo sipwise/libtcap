@@ -22,7 +22,7 @@ static ber_tlv_tag_t asn_DEF_redirectServiceTreatmentInd_tags_14[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_TYPE_tag2member_t asn_MAP_redirectServiceTreatmentInd_tag2el_14[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 } /* redirectReason at 434 */
+    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 } /* redirectReason at 435 */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_redirectServiceTreatmentInd_specs_14 = {
 	sizeof(struct redirectServiceTreatmentInd),
@@ -190,20 +190,20 @@ static ber_tlv_tag_t asn_DEF_ServiceInteractionIndicatorsTwo_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_TYPE_tag2member_t asn_MAP_ServiceInteractionIndicatorsTwo_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* forwardServiceInteractionInd at 387 */
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* backwardServiceInteractionInd at 390 */
-    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* bothwayThroughConnectionInd at 392 */
-    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 }, /* suspendTimer at 394 */
-    { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 4, 0, 0 }, /* connectedNumberTreatmentInd at 396 */
-    { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 5, 0, 0 }, /* suppressCallDiversionNotification at 398 */
-    { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 6, 0, 0 }, /* suppressCallTransferNotification at 400 */
-    { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 7, 0, 0 }, /* allowCdINNoPresentationInd at 402 */
-    { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 }, /* userDialogueDurationInd at 407 */
-    { (ASN_TAG_CLASS_CONTEXT | (9 << 2)), 9, 0, 0 }, /* overrideLineRestrictions at 412 */
-    { (ASN_TAG_CLASS_CONTEXT | (10 << 2)), 10, 0, 0 }, /* suppressVPNAPP at 419 */
-    { (ASN_TAG_CLASS_CONTEXT | (11 << 2)), 11, 0, 0 }, /* calledINNumberOverriding at 426 */
-    { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 12, 0, 0 }, /* redirectServiceTreatmentInd at 434 */
-    { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 13, 0, 0 } /* nonCUGCall at 447 */
+    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* forwardServiceInteractionInd at 388 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* backwardServiceInteractionInd at 391 */
+    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* bothwayThroughConnectionInd at 393 */
+    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 }, /* suspendTimer at 395 */
+    { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 4, 0, 0 }, /* connectedNumberTreatmentInd at 397 */
+    { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 5, 0, 0 }, /* suppressCallDiversionNotification at 399 */
+    { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 6, 0, 0 }, /* suppressCallTransferNotification at 401 */
+    { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 7, 0, 0 }, /* allowCdINNoPresentationInd at 403 */
+    { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 }, /* userDialogueDurationInd at 408 */
+    { (ASN_TAG_CLASS_CONTEXT | (9 << 2)), 9, 0, 0 }, /* overrideLineRestrictions at 413 */
+    { (ASN_TAG_CLASS_CONTEXT | (10 << 2)), 10, 0, 0 }, /* suppressVPNAPP at 420 */
+    { (ASN_TAG_CLASS_CONTEXT | (11 << 2)), 11, 0, 0 }, /* calledINNumberOverriding at 427 */
+    { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 12, 0, 0 }, /* redirectServiceTreatmentInd at 435 */
+    { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 13, 0, 0 } /* nonCUGCall at 448 */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_ServiceInteractionIndicatorsTwo_specs_1 = {
 	sizeof(struct ServiceInteractionIndicatorsTwo),

@@ -152,10 +152,10 @@ static ber_tlv_tag_t asn_DEF_BackwardServiceInteractionInd_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_TYPE_tag2member_t asn_MAP_BackwardServiceInteractionInd_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 0, 0, 0 }, /* conferenceTreatmentIndicator at 359 */
-    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 1, 0, 0 }, /* callCompletionTreatmentIndicator at 363 */
-    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 2, 0, 0 }, /* holdTreatmentIndicator at 367 */
-    { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 3, 0, 0 } /* ectTreatmentIndicator at 371 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 0, 0, 0 }, /* conferenceTreatmentIndicator at 360 */
+    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 1, 0, 0 }, /* callCompletionTreatmentIndicator at 364 */
+    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 2, 0, 0 }, /* holdTreatmentIndicator at 368 */
+    { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 3, 0, 0 } /* ectTreatmentIndicator at 372 */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_BackwardServiceInteractionInd_specs_1 = {
 	sizeof(struct BackwardServiceInteractionInd),

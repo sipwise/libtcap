@@ -102,16 +102,16 @@ static ber_tlv_tag_t asn_DEF_BISDNParameters_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_TYPE_tag2member_t asn_MAP_BISDNParameters_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* aALParameters at 501 */
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* additionalATMCellRate at 502 */
-    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* aESACalledParty at 503 */
-    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 }, /* aESACallingParty at 504 */
-    { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 4, 0, 0 }, /* alternativeATMTrafficDescriptor at 506 */
-    { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 5, 0, 0 }, /* aTMCellRate at 507 */
-    { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 6, 0, 0 }, /* cDVTDescriptor at 508 */
-    { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 7, 0, 0 }, /* cumulativeTransitDelay at 509 */
-    { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 }, /* endToEndTransitDelay at 510 */
-    { (ASN_TAG_CLASS_CONTEXT | (9 << 2)), 9, 0, 0 } /* minAcceptableATMTrafficDescriptor at 512 */
+    { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* aALParameters at 502 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* additionalATMCellRate at 503 */
+    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* aESACalledParty at 504 */
+    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 }, /* aESACallingParty at 505 */
+    { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 4, 0, 0 }, /* alternativeATMTrafficDescriptor at 507 */
+    { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 5, 0, 0 }, /* aTMCellRate at 508 */
+    { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 6, 0, 0 }, /* cDVTDescriptor at 509 */
+    { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 7, 0, 0 }, /* cumulativeTransitDelay at 510 */
+    { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 }, /* endToEndTransitDelay at 511 */
+    { (ASN_TAG_CLASS_CONTEXT | (9 << 2)), 9, 0, 0 } /* minAcceptableATMTrafficDescriptor at 513 */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_BISDNParameters_specs_1 = {
 	sizeof(struct BISDNParameters),

@@ -222,12 +222,12 @@ static ber_tlv_tag_t asn_DEF_ForwardServiceInteractionInd_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
 static asn_TYPE_tag2member_t asn_MAP_ForwardServiceInteractionInd_tag2el_1[] = {
-    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 0, 0, 0 }, /* conferenceTreatmentIndicator at 326 */
-    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 1, 0, 0 }, /* callDiversionTreatmentIndicator at 330 */
-    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 2, 0, 0 }, /* callOfferingTreatmentIndicator at 334 */
-    { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 3, 0, 0 }, /* callWaitingTreatmentIndicator at 343 */
-    { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 4, 0, 0 }, /* holdTreatmentIndicator at 349 */
-    { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 5, 0, 0 } /* ectTreatmentIndicator at 353 */
+    { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 0, 0, 0 }, /* conferenceTreatmentIndicator at 327 */
+    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 1, 0, 0 }, /* callDiversionTreatmentIndicator at 331 */
+    { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 2, 0, 0 }, /* callOfferingTreatmentIndicator at 335 */
+    { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 3, 0, 0 }, /* callWaitingTreatmentIndicator at 344 */
+    { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 4, 0, 0 }, /* holdTreatmentIndicator at 350 */
+    { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 5, 0, 0 } /* ectTreatmentIndicator at 354 */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_ForwardServiceInteractionInd_specs_1 = {
 	sizeof(struct ForwardServiceInteractionInd),

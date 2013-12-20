@@ -11,35 +11,24 @@
 #include <asn_application.h>
 
 /* Including external dependencies */
-#include <NativeInteger.h>
 #include <INTEGER.h>
-#include <constr_CHOICE.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-/* Dependencies */
-typedef enum ErrorCode_PR {
-	ErrorCode_PR_NOTHING,	/* No components present */
-	ErrorCode_PR_nationaler,
-	ErrorCode_PR_privateer
-} ErrorCode_PR;
-
 /* ErrorCode */
-typedef struct ErrorCode {
-	ErrorCode_PR present;
-	union ErrorCode_u {
-		long	 nationaler;
-		INTEGER_t	 privateer;
-	} choice;
-	
-	/* Context for parsing across buffer boundaries */
-	asn_struct_ctx_t _asn_ctx;
-} ErrorCode_t;
+typedef INTEGER_t	 ErrorCode_t;
 
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_ErrorCode;
+asn_struct_free_f ErrorCode_free;
+asn_struct_print_f ErrorCode_print;
+asn_constr_check_f ErrorCode_constraint;
+ber_type_decoder_f ErrorCode_decode_ber;
+der_type_encoder_f ErrorCode_encode_der;
+xer_type_decoder_f ErrorCode_decode_xer;
+xer_type_encoder_f ErrorCode_encode_xer;
 
 #ifdef __cplusplus
 }

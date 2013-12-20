@@ -53,8 +53,8 @@ static asn_TYPE_member_t asn_MBR_USIServiceIndicator_1[] = {
 		},
 };
 static asn_TYPE_tag2member_t asn_MAP_USIServiceIndicator_tag2el_1[] = {
-    { (ASN_TAG_CLASS_UNIVERSAL | (4 << 2)), 1, 0, 0 }, /* local at 715 */
-    { (ASN_TAG_CLASS_UNIVERSAL | (6 << 2)), 0, 0, 0 } /* global at 713 */
+    { (ASN_TAG_CLASS_UNIVERSAL | (4 << 2)), 1, 0, 0 }, /* local at 716 */
+    { (ASN_TAG_CLASS_UNIVERSAL | (6 << 2)), 0, 0, 0 } /* global at 714 */
 };
 static asn_CHOICE_specifics_t asn_SPC_USIServiceIndicator_specs_1 = {
 	sizeof(struct USIServiceIndicator),

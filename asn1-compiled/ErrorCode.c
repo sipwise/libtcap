@@ -6,84 +6,102 @@
 
 #include "ErrorCode.h"
 
-static int
-memb_nationaler_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
+int
+ErrorCode_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
-	long value;
-	
-	if(!sptr) {
-		_ASN_CTFAIL(app_key, td, sptr,
-			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
-		return -1;
-	}
-	
-	value = *(const long *)sptr;
-	
-	if((value >= -32768 && value <= 32767)) {
-		/* Constraint check succeeded */
-		return 0;
-	} else {
-		_ASN_CTFAIL(app_key, td, sptr,
-			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
-		return -1;
-	}
+	/* Replace with underlying type checker */
+	td->check_constraints = asn_DEF_INTEGER.check_constraints;
+	return td->check_constraints(td, sptr, ctfailcb, app_key);
 }
 
-static asn_TYPE_member_t asn_MBR_ErrorCode_1[] = {
-	{ ATF_NOFLAGS, 0, offsetof(struct ErrorCode, choice.nationaler),
-		(ASN_TAG_CLASS_PRIVATE | (19 << 2)),
-		-1,	/* IMPLICIT tag at current level */
-		&asn_DEF_NativeInteger,
-		memb_nationaler_constraint_1,
-		0,	/* PER is not compiled, use -gen-PER */
-		0,
-		"nationaler"
-		},
-	{ ATF_NOFLAGS, 0, offsetof(struct ErrorCode, choice.privateer),
-		(ASN_TAG_CLASS_PRIVATE | (20 << 2)),
-		-1,	/* IMPLICIT tag at current level */
-		&asn_DEF_INTEGER,
-		0,	/* Defer constraints checking to the member type */
-		0,	/* PER is not compiled, use -gen-PER */
-		0,
-		"privateer"
-		},
-};
-static asn_TYPE_tag2member_t asn_MAP_ErrorCode_tag2el_1[] = {
-    { (ASN_TAG_CLASS_PRIVATE | (19 << 2)), 0, 0, 0 }, /* nationaler at 275 */
-    { (ASN_TAG_CLASS_PRIVATE | (20 << 2)), 1, 0, 0 } /* privateer at 277 */
-};
-static asn_CHOICE_specifics_t asn_SPC_ErrorCode_specs_1 = {
-	sizeof(struct ErrorCode),
-	offsetof(struct ErrorCode, _asn_ctx),
-	offsetof(struct ErrorCode, present),
-	sizeof(((struct ErrorCode *)0)->present),
-	asn_MAP_ErrorCode_tag2el_1,
-	2,	/* Count of tags in the map */
-	0,
-	-1	/* Extensions start */
+/*
+ * This type is implemented using INTEGER,
+ * so here we adjust the DEF accordingly.
+ */
+static void
+ErrorCode_1_inherit_TYPE_descriptor(asn_TYPE_descriptor_t *td) {
+	td->free_struct    = asn_DEF_INTEGER.free_struct;
+	td->print_struct   = asn_DEF_INTEGER.print_struct;
+	td->ber_decoder    = asn_DEF_INTEGER.ber_decoder;
+	td->der_encoder    = asn_DEF_INTEGER.der_encoder;
+	td->xer_decoder    = asn_DEF_INTEGER.xer_decoder;
+	td->xer_encoder    = asn_DEF_INTEGER.xer_encoder;
+	td->uper_decoder   = asn_DEF_INTEGER.uper_decoder;
+	td->uper_encoder   = asn_DEF_INTEGER.uper_encoder;
+	if(!td->per_constraints)
+		td->per_constraints = asn_DEF_INTEGER.per_constraints;
+	td->elements       = asn_DEF_INTEGER.elements;
+	td->elements_count = asn_DEF_INTEGER.elements_count;
+	td->specifics      = asn_DEF_INTEGER.specifics;
+}
+
+void
+ErrorCode_free(asn_TYPE_descriptor_t *td,
+		void *struct_ptr, int contents_only) {
+	ErrorCode_1_inherit_TYPE_descriptor(td);
+	td->free_struct(td, struct_ptr, contents_only);
+}
+
+int
+ErrorCode_print(asn_TYPE_descriptor_t *td, const void *struct_ptr,
+		int ilevel, asn_app_consume_bytes_f *cb, void *app_key) {
+	ErrorCode_1_inherit_TYPE_descriptor(td);
+	return td->print_struct(td, struct_ptr, ilevel, cb, app_key);
+}
+
+asn_dec_rval_t
+ErrorCode_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
+		void **structure, const void *bufptr, size_t size, int tag_mode) {
+	ErrorCode_1_inherit_TYPE_descriptor(td);
+	return td->ber_decoder(opt_codec_ctx, td, structure, bufptr, size, tag_mode);
+}
+
+asn_enc_rval_t
+ErrorCode_encode_der(asn_TYPE_descriptor_t *td,
+		void *structure, int tag_mode, ber_tlv_tag_t tag,
+		asn_app_consume_bytes_f *cb, void *app_key) {
+	ErrorCode_1_inherit_TYPE_descriptor(td);
+	return td->der_encoder(td, structure, tag_mode, tag, cb, app_key);
+}
+
+asn_dec_rval_t
+ErrorCode_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
+		void **structure, const char *opt_mname, const void *bufptr, size_t size) {
+	ErrorCode_1_inherit_TYPE_descriptor(td);
+	return td->xer_decoder(opt_codec_ctx, td, structure, opt_mname, bufptr, size);
+}
+
+asn_enc_rval_t
+ErrorCode_encode_xer(asn_TYPE_descriptor_t *td, void *structure,
+		int ilevel, enum xer_encoder_flags_e flags,
+		asn_app_consume_bytes_f *cb, void *app_key) {
+	ErrorCode_1_inherit_TYPE_descriptor(td);
+	return td->xer_encoder(td, structure, ilevel, flags, cb, app_key);
+}
+
+static ber_tlv_tag_t asn_DEF_ErrorCode_tags_1[] = {
+	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
 asn_TYPE_descriptor_t asn_DEF_ErrorCode = {
 	"ErrorCode",
 	"ErrorCode",
-	CHOICE_free,
-	CHOICE_print,
-	CHOICE_constraint,
-	CHOICE_decode_ber,
-	CHOICE_encode_der,
-	CHOICE_decode_xer,
-	CHOICE_encode_xer,
+	ErrorCode_free,
+	ErrorCode_print,
+	ErrorCode_constraint,
+	ErrorCode_decode_ber,
+	ErrorCode_encode_der,
+	ErrorCode_decode_xer,
+	ErrorCode_encode_xer,
 	0, 0,	/* No PER support, use "-gen-PER" to enable */
-	CHOICE_outmost_tag,
-	0,	/* No effective tags (pointer) */
-	0,	/* No effective tags (count) */
-	0,	/* No tags (pointer) */
-	0,	/* No tags (count) */
+	0,	/* Use generic outmost tag fetcher */
+	asn_DEF_ErrorCode_tags_1,
+	sizeof(asn_DEF_ErrorCode_tags_1)
+		/sizeof(asn_DEF_ErrorCode_tags_1[0]), /* 1 */
+	asn_DEF_ErrorCode_tags_1,	/* Same as above */
+	sizeof(asn_DEF_ErrorCode_tags_1)
+		/sizeof(asn_DEF_ErrorCode_tags_1[0]), /* 1 */
 	0,	/* No PER visible constraints */
-	asn_MBR_ErrorCode_1,
-	2,	/* Elements count */
-	&asn_SPC_ErrorCode_specs_1	/* Additional specs */
+	0, 0,	/* No members */
+	0	/* No specifics */
 };
 
