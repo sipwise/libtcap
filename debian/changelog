@@ -1,3 +1,19 @@
+ngcp-libtcap (0.0.1+0~mr3.3) unstable; urgency=low
+
+  [ Michael Prokop ]
+  * [3f06f96] MT#5325 Makefile: provide install target
+
+  [ Richard Fuchs ]
+  * [949d691] remove makefile redundancies
+  * [7525bdd] we also need the compiled ASN1 headers in the package
+  * [56a5a23] fix asn spec for initialdp arg and add test case
+  * [4ef71e9] move ISUP number conversion into lib
+  * [05fe73b] re-define ErrorCode as INTEGER
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sat, 01 Feb 2014 19:46:14 +0100
+
 ngcp-libtcap (0.0.1) unstable; urgency=low
 
   * Initial release
