@@ -1,3 +1,17 @@
+ngcp-libtcap (0.0.1+0~mr2.8.0.1) unstable; urgency=low
+
+  [ Michael Prokop ]
+  * [3f06f96] MT#5325 Makefile: provide install target
+
+  [ Richard Fuchs ]
+  * [949d691] remove makefile redundancies
+  * [7525bdd] we also need the compiled ASN1 headers in the package
+  * [56a5a23] fix asn spec for initialdp arg and add test case
+  * [4ef71e9] move ISUP number conversion into lib
+  * [05fe73b] re-define ErrorCode as INTEGER
+
+ -- Alexander Lutay <alutay@sipwise.com>  Thu, 27 Feb 2014 12:02:56 +0100
+
 ngcp-libtcap (0.0.1) unstable; urgency=low
 
   * Initial release
