@@ -1,3 +1,9 @@
+ngcp-libtcap (0.1.0.0+0~mr3.3.0.0) unstable; urgency=low
+
+  * [8ce505f] MT#6101 Add README.md file
+
+ -- Alexander Lutay <alutay@sipwise.com>  Fri, 21 Mar 2014 15:24:51 +0100
+
 ngcp-libtcap (0.0.1+0~mr3.3) unstable; urgency=low
 
   [ Michael Prokop ]
