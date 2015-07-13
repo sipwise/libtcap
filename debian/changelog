@@ -1,3 +1,12 @@
+ngcp-libtcap (0.8.0.0+0~mr4.1.0.0) unstable; urgency=low
+
+  [ Alexander Lutay ]
+  * [8bb7679] MT#7505 Add .gitreview file for libtcap
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 13 Jul 2015 15:15:46 +0200
+
 ngcp-libtcap (0.7.0.0+0~mr4.0.0.0) unstable; urgency=low
 
   [ Michael Prokop ]
