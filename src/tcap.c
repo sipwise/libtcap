@@ -229,8 +229,10 @@ int inap_extract(const char *buf, size_t len, const char *spec, struct output_bu
 	asn_TYPE_descriptor_t *type;
 
 	tcm = tcap_decode(buf, len);
-	if (!tcm)
+	if (!tcm) {
+		i = -5;
 		goto error;
+	}
 
 	switch (tcm->present) {
 		case TCMessage_PR_unidirectional:
@@ -250,18 +252,23 @@ int inap_extract(const char *buf, size_t len, const char *spec, struct output_bu
 			break;
 
 		default:
+			i = -4;
 			goto error;
 	}
 
-	if (!cp)
+	if (!cp) {
+		i = -3;
 		goto error;
+	}
 
 	token = spec;
 
 	/* first token is the type we're looking for */
 
-	if (next_token_1(&token, &token_len, &c))
+	if (next_token_1(&token, &token_len, &c)) {
+		i = -2;
 		goto error;
+	}
 
 	for (i = 0; i < cp->list.count; i++) {
 		cmp = cp->list.array[i];
@@ -276,7 +283,7 @@ int inap_extract(const char *buf, size_t len, const char *spec, struct output_bu
 		if (!strncmp(type->name, token, token_len))
 			goto found_parameter;
 	}
-
+	i = -1;
 	goto error;
 
 found_parameter:
@@ -293,7 +300,7 @@ found_parameter:
 error:
 	if (tcm)
 		asn_DEF_TCMessage.free_struct(&asn_DEF_TCMessage, tcm, 0);
-	return -1;
+	return i;
 }
 
 
