@@ -1,7 +1,10 @@
-Upstream Author: The Sipwise Team - http://sipwise.com/
-Copyright:       Copyright (c) 2013 Sipwise GmbH, Austria
-License:         All software included in this package is
-                 Copyright (c) Sipwise GmbH, Austria.
-                 All rights reserved. You may not copy, distribute
-                 or modify without prior written permission from
-                 Sipwise GmbH, Austria.
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://www.sipwise.com/
+Upstream-Contact: Sipwise Development Team <support@sipwise.com>
+
+Files: *
+Copyright:
+ Copyright © 2013-2015 Sipwise GmbH, Austria
+License: Sipwise-proprietary
+ All rights reserved.  You may NOT copy, distribute or modify without
+ prior written permission from Sipwise GmbH, Austria.
