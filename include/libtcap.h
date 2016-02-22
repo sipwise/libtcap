@@ -26,6 +26,7 @@ void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **);
 int tcap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out);
 int inap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out);
 int isup_convert_number(const char *inp, int inlen, char *out);
+int isup_convert_number_hex(const char *inp, int inlen, char *out);
 
 
 #endif

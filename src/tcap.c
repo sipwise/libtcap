@@ -321,8 +321,35 @@ static inline char phone_digit(unsigned char d) {
 	}
 }
 
+static inline char phone_digit_hex(unsigned char d) {
+	switch (d) {
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+			return '0' + d;
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+		case 15:
+			return 'A' + d - 10;
+		default:
+			return '?';
+	}
+}
 
-int isup_convert_number(const char *inp, int inlen, char *out) {
+
+static inline int isup_convert_number_common(const char *inp, int inlen, char *out,
+		char (*func)(unsigned char))
+{
 	const char *pi;
 	unsigned char raw[32] = "", *pr;
 	int rawlen, odd;
@@ -395,4 +422,11 @@ int isup_convert_number(const char *inp, int inlen, char *out) {
 
 error:
 	return -1;
+}
+
+int isup_convert_number(const char *inp, int inlen, char *out) {
+	return isup_convert_number_common(inp, inlen, out, phone_digit);
+}
+int isup_convert_number_hex(const char *inp, int inlen, char *out) {
+	return isup_convert_number_common(inp, inlen, out, phone_digit_hex);
 }
