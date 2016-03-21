@@ -1,3 +1,15 @@
+ngcp-libtcap (0.10.1.0+0~mr4.3.1.0) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [6269ca1] MT#17699 Bump Standards-Version to 3.9.7
+
+  [ Richard Fuchs ]
+  * [2eb0c57] MT#18057 create new isup_convert_number_hex()
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 21 Mar 2016 22:17:54 +0100
+
 ngcp-libtcap (0.10.0.0+0~mr4.3.0.0) unstable; urgency=medium
 
   * New release.
