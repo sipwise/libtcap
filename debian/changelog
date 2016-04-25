@@ -1,3 +1,12 @@
+ngcp-libtcap (0.9.2.1+0~mr4.2.2.1) unstable; urgency=medium
+
+  [ Richard Fuchs ]
+  * [6d75920] MT#18057 create new isup_convert_number_hex()
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 25 Apr 2016 09:21:47 +0200
+
 ngcp-libtcap (0.9.2.0+0~mr4.2.2.0) unstable; urgency=medium
 
   * New release.
