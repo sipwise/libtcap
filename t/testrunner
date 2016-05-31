@@ -1,0 +1,77 @@
+#!/bin/bash
+# This script is used for running the tests with proper arguments
+# from within Jenkins
+
+set -e
+set -u
+set -x
+
+if [ -d /results ] ; then
+  # Running from Jenkins (RW)
+  RESULTS="/results"
+
+  cd "/code"
+else
+  # Running locally in Docker
+  RESULTS="./results"
+  mkdir -p "${RESULTS}"
+fi
+
+source_path="$(pwd)"
+
+# jenkins environment vars
+if [ -z "${release:-}" ] ; then
+  release="none"
+fi
+if [ -z "${tag:-}" ] ; then
+  tag="none"
+fi
+if [ -z "${old_version:-}" ] ; then
+  old_version="latest_tag"
+fi
+if [ -z "${new_version:-}" ] ; then
+  new_version="none"
+fi
+if [ -z "${branch:-}" ] ; then
+  branch="none"
+fi
+
+if [[ "${release}" =~ ^release-mr ]] ; then
+  echo "release detected"
+  short_release=${release%%-update}
+  short_release=${short_release##release-}
+
+  if [[ "${short_release}" =~ ^mr([0-9]+)\.([0-9]+)\.([0-9]+)$ ]] ; then
+    common_release="mr${BASH_REMATCH[1]}.${BASH_REMATCH[2]}\."
+    new_version="${tag}"
+  else
+    echo "yellow zone release detected"
+    common_release="${short_release}\."
+  fi
+  old_version=$(cd "${source_path}" ; git tag | grep -v jenkins-libtcap | \
+      grep "${common_release}" | sort -r | head -1)
+
+  if [ -z "${old_version}" ] ; then
+    echo "No tag found for ${common_release}. Using latest_tag"
+    old_version="latest_tag"
+  fi
+else
+  if [ "${old_version}" = "latest_tag" ] ; then
+    if [[ "${branch}" =~ ^mr[0-9]+\.[0-9]+$ ]] ; then
+      old_version=$(cd "${source_path}" ; git tag | grep -v jenkins-libtcap | \
+        grep "${branch}\." | sort -r | head -1)
+    fi
+  fi
+
+  if [ "$new_version" = "none" ] ; then
+    echo "New version is unset, defaulting to master"
+    new_version=master
+  fi
+fi
+
+if [ "${old_version}" = "latest_tag" ] ; then
+  old_version=$(cd "${source_path}" ; git tag | grep -v jenkins-libtcap |\
+    sort -r | head -1)
+fi
+
+RESULTS=${RESULTS} ./t/abi-check.sh "$old_version" "$new_version"
