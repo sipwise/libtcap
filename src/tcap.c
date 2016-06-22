@@ -36,6 +36,38 @@ static asn_TYPE_descriptor_t *opcode_type_map[] = {
 
 
 
+static int buf_append(const void *buffer, size_t size, void *app_key) {
+	FILE *fp = app_key;
+	size_t ret;
+
+	if (!buffer || !size)
+		return 0;
+	//fprintf(stderr, "writing %p %lu\n", buffer, size);
+	ret = fwrite(buffer, size, 1, fp);
+	return (ret == 1) ? 0 : -1;
+}
+
+int tcap_encode(char **out, TCMessage_t *msg) {
+	FILE *fp;
+	char *str;
+	size_t len;
+	asn_enc_rval_t ec;
+
+	fp = open_memstream(&str, &len);
+	if (!fp)
+		return -1;
+
+	ec = der_encode(&asn_DEF_TCMessage, msg, buf_append, fp);
+
+	fclose(fp);
+
+	if (ec.encoded == -1)
+		return -1;
+
+	*out = str;
+	return len;
+}
+
 TCMessage_t *tcap_decode(const char *buf, size_t len) {
 	TCMessage_t *ret = NULL;
 	asn_dec_rval_t rv;
