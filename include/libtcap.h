@@ -28,5 +28,7 @@ int inap_extract(const char *buf, size_t len, const char *spec, struct output_bu
 int isup_convert_number(const char *inp, int inlen, char *out);
 int isup_convert_number_hex(const char *inp, int inlen, char *out);
 
+int tcap_encode(char **out, TCMessage_t *msg);
+
 
 #endif
