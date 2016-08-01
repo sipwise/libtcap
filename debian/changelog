@@ -1,3 +1,19 @@
+ngcp-libtcap (0.12.1.0+0~mr4.5.1.0) unstable; urgency=medium
+
+  [ Victor Seva ]
+  * [d7c7de0] MT#6259 provide docker abi-check
+  * [12a0af3] MT#20189 debian: fix lintian error
+
+  [ Guillem Jover ]
+  * [d36c6c5] MT#16473 Relicense to GPL-3+
+
+  [ Richard Fuchs ]
+  * [e514e9a] MT#20617 support BER/DER encoding
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 01 Aug 2016 16:26:34 +0200
+
 ngcp-libtcap (0.12.0.0+0~mr4.5.0.0) unstable; urgency=medium
 
   * New release.
