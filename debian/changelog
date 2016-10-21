@@ -1,4 +1,4 @@
-ngcp-libtcap (0.13.0.0+0~mr5.0.0.0) unstable; urgency=medium
+ngcp-libtcap (5.0.0.0+0~mr5.0.0.0) unstable; urgency=medium
 
   [ Victor Seva ]
   * [d7c7de0] MT#6259 provide docker abi-check
@@ -10,9 +10,7 @@ ngcp-libtcap (0.13.0.0+0~mr5.0.0.0) unstable; urgency=medium
   [ Richard Fuchs ]
   * [e514e9a] MT#20617 support BER/DER encoding
 
-  [ Sipwise Jenkins Builder ]
-
- -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 01 Aug 2016 16:26:37 +0200
+ -- Alexander Lutay <alutay@sipwise.com>  Fri, 21 Oct 2016 15:33:52 +0200
 
 ngcp-libtcap (0.12.0.0+0~mr4.5.0.0) unstable; urgency=medium
 
