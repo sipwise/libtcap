@@ -1,0 +1,7 @@
+Verified+1: Jenkins Jenkins
+Code-Review+2: Richard Fuchs <rfuchs@sipwise.com>
+Submitted-by: Alexander Lutay <alutay@sipwise.com>
+Submitted-at: Fri, 21 Oct 2016 15:40:36 +0200
+Reviewed-on: http://gerrit.mgm.sipwise.com/9085
+Project: libtcap
+Branch: refs/heads/master
