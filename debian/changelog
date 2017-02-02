@@ -1,3 +1,13 @@
+ngcp-libtcap (5.1.1.0+0~mr5.1.1.0) unstable; urgency=medium
+
+  [ Sergii Kipot ]
+  * [ee73e52] TT#8635 set umask for files created by docker
+  * [9214bdb] Revert "TT#8635 set umask for files created by docker"
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Fri, 03 Feb 2017 00:34:33 +0100
+
 ngcp-libtcap (5.1.0.0+0~mr5.1.0.0) unstable; urgency=medium
 
   * New release.
