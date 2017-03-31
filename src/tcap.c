@@ -111,7 +111,8 @@ void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **type) {
 		(*type)->free_struct(*type, arg, 0);
 
 nothing:
-	*type = NULL;
+	if(type)
+		*type = NULL;
 	return NULL;
 }
 
@@ -330,7 +331,7 @@ error:
 
 
 static inline char phone_digit(unsigned char d) {
-	if (d >= 0 && d <= 9)
+	if (d <= 9)
 		return '0' + d;
 	switch (d) {
 		case 11:
@@ -345,7 +346,7 @@ static inline char phone_digit(unsigned char d) {
 }
 
 static inline char phone_digit_hex(unsigned char d) {
-	if (d >= 0 && d <= 9)
+	if (d <= 9)
 		return '0' + d;
 	else if (d >= 10 && d <= 15)
 		return 'A' + d - 10;

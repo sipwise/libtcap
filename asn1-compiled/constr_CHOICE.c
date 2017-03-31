@@ -670,7 +670,6 @@ CHOICE_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			case -1:
 				ctx->phase = 5;
 				RETURN(RC_FAIL);
-				continue;
 			case 1:
 				ctx->phase = 3;
 				/* Fall through */
@@ -1029,11 +1028,13 @@ CHOICE_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 void
 CHOICE_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
-	asn_CHOICE_specifics_t *specs = (asn_CHOICE_specifics_t *)td->specifics;
+	asn_CHOICE_specifics_t *specs;
 	int present;
 
 	if(!td || !ptr)
 		return;
+
+	specs = (asn_CHOICE_specifics_t *)td->specifics;
 
 	ASN_DEBUG("Freeing %s as CHOICE", td->name);
 

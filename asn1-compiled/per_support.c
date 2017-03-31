@@ -12,7 +12,7 @@ per_data_string(asn_per_data_t *pd) {
 	static char buf[2][32];
 	static int n;
 	n = (n+1) % 2;
-	snprintf(buf[n], sizeof(buf),
+	snprintf(buf[n], sizeof(buf[n]),
 		"{m=%ld span %+ld[%d..%d] (%d)}",
 		(long)pd->moved,
 		(((long)pd->buffer) & 0xf),
@@ -342,8 +342,10 @@ per_put_few_bits(asn_per_outp_t *po, uint32_t bits, int obits) {
 		buf[2] = bits >> 8,
 		buf[3] = bits;
 	else {
-		per_put_few_bits(po, bits >> (obits - 24), 24);
-		per_put_few_bits(po, bits, obits - 24);
+		if (obits >= 24) { /* probably a coverity false positive */
+			per_put_few_bits(po, bits >> (obits - 24), 24);
+			per_put_few_bits(po, bits, obits - 24);
+		}
 	}
 
 	ASN_DEBUG("[PER out %u/%x => %02x buf+%ld]",

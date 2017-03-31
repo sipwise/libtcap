@@ -123,7 +123,7 @@ uper_encode_internal(asn_TYPE_descriptor_t *td, asn_per_constraints_t *constrain
 	/*
 	 * Invoke type-specific encoder.
 	 */
-	if(!td || !td->uper_encoder)
+	if(!(td && td->uper_encoder))
 		_ASN_ENCODE_FAILED;	/* PER is not compiled in */
 
 	po.buffer = po.tmpspace;

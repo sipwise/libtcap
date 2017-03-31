@@ -296,8 +296,10 @@ OBJECT_IDENTIFIER__xer_body_decode(asn_TYPE_descriptor_t *td, void *sptr, const 
 		ret = OBJECT_IDENTIFIER_parse_arcs(
 			(const char *)chunk_buf, chunk_size,
 			arcs, arcs_count, &endptr);
-		if(ret != arcs_count)
+		if(ret != arcs_count) {
+            free(arcs);
 			return XPBD_SYSTEM_FAILURE;	/* assert?.. */
+        }
 	}
 
 	/*
