@@ -65,7 +65,8 @@ uper_open_type_get_simple(asn_codec_ctx_t *ctx, asn_TYPE_descriptor_t *td,
 	asn_per_data_t spd;
 	size_t padding;
 
-	_ASN_STACK_OVERFLOW_CHECK(ctx);
+	if(_ASN_STACK_OVERFLOW_CHECK(ctx))
+		_ASN_DECODE_FAILED;
 
 	ASN_DEBUG("Getting open type %s...", td->name);
 
@@ -106,10 +107,10 @@ uper_open_type_get_simple(asn_codec_ctx_t *ctx, asn_TYPE_descriptor_t *td,
 	if(rv.code == RC_OK) {
 		/* Check padding validity */
 		padding = spd.nbits - spd.nboff;
-                if ((padding < 8 ||
+				if ((padding < 8 ||
 		/* X.691#10.1.3 */
 		(spd.nboff == 0 && spd.nbits == 8 && spd.buffer == buf)) &&
-                    per_get_few_bits(&spd, padding) == 0) {
+					per_get_few_bits(&spd, padding) == 0) {
 			/* Everything is cool */
 			FREEMEM(buf);
 			return rv;
@@ -138,7 +139,8 @@ uper_open_type_get_complex(asn_codec_ctx_t *ctx, asn_TYPE_descriptor_t *td,
 	asn_dec_rval_t rv;
 	ssize_t padding;
 
-	_ASN_STACK_OVERFLOW_CHECK(ctx);
+	if(_ASN_STACK_OVERFLOW_CHECK(ctx))
+		_ASN_DECODE_FAILED;
 
 	ASN_DEBUG("Getting open type %s from %s", td->name,
 		per_data_string(pd));

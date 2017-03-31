@@ -47,7 +47,11 @@ int main() {
 
 	ret = tcap_encode(&buf, &msg);
 	fprintf(stderr, "ret: %i\n", ret);
-	fwrite(buf, ret, 1, stdout);
+    if(ret < 0) {
+	    fprintf(stderr, "failed to encode tcap\n");
+    } else {
+	    fwrite(buf, ret, 1, stdout);
+    }
 
 	free(buf);
 	asn_DEF_ANY.free_struct(&asn_DEF_ANY, cmp.choice.invoke.parameter, 0);
