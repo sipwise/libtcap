@@ -40,7 +40,7 @@ int main() {
 	cpn_arr = &cpn;
 	ca.destinationRoutingAddress.list.array = &cpn_arr;
 
-	cpn.buf = "1234567890";
+	cpn.buf = (void *) "1234567890";
 	cpn.size = 10;
 
 	cmp.choice.invoke.parameter = ANY_new_fromType(&asn_DEF_ConnectArg, &ca);
@@ -55,7 +55,6 @@ int main() {
 
 	free(buf);
 	asn_DEF_ANY.free_struct(&asn_DEF_ANY, cmp.choice.invoke.parameter, 0);
-	asn_DEF_INTEGER.free_struct(&asn_DEF_INTEGER, &cmp.choice.invoke.opCode.choice.localValue, 0);
 
 	return 0;
 }
