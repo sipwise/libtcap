@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ae5cdf2_fb688f89",
+        "filename": "tests/encode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-14T14:46:44Z",
+      "side": 1,
+      "message": "Why not make this more future-proof, and simply strdup() the string so that the free does not need to go?",
+      "revId": "b26c6c8dc5e3b969d8cbe07da124483b424685f2",
+      "serverId": "85315e57-5f03-49c3-83f8-201ae2313a75",
+      "unresolved": false
+    }
+  ]
+}
