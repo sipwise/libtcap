@@ -1,3 +1,15 @@
+ngcp-libtcap (5.5.1.0+0~mr5.5.1.0) unstable; urgency=medium
+
+  [ Richard Fuchs ]
+  * [b26c6c8] TT#20407 fix test script segfault
+
+  [ Alexander Lutay ]
+  * [08ad66b] TT#21905 Switch libtcap Dockerfile to Debian stretch
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 02 Oct 2017 23:39:48 +0200
+
 ngcp-libtcap (5.5.0.0+0~mr5.5.0.0) unstable; urgency=medium
 
   * New release.
