@@ -216,8 +216,10 @@ found_member:
 
 		type = member->type;
 		element = element + member->memb_offset;
-		if (member->flags & ATF_POINTER)
+		if (element && (member->flags & ATF_POINTER))
 			element = *((void **) element);
+		if (!element)
+			break;
 
 found_element:
 		if (next_token_2(&token, &c))
