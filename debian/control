@@ -20,8 +20,8 @@ Package: ngcp-libtcap-dev
 Architecture: any
 Section: libdevel
 Depends:
- ${misc:Depends},
  ngcp-libtcap0 (= ${binary:Version}),
+ ${misc:Depends},
 Description: Headers for ngcp-libtcap0
  Library providing handling ASN.1-coded TCAP and INAP messages
  .
