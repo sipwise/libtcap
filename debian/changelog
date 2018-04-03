@@ -1,3 +1,12 @@
+ngcp-libtcap (6.3.0.0+0~mr6.3.0.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [de5d641] TT#33911 Perform 'wrap-and-sort -sat'
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 03 Apr 2018 22:28:12 +0200
+
 ngcp-libtcap (6.2.0.0+0~mr6.2.0.0) unstable; urgency=medium
 
   * New release.
