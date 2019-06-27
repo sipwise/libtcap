@@ -54,7 +54,7 @@ check/source.${old_version_norm}/include
 </headers>
 
 <libs>
-check/source.${old_version_norm}/lib/
+check/source.${old_version_norm}/src/
 </libs>
 
 <include_paths>
@@ -72,7 +72,7 @@ check/source.${new_version_norm}/include
 </headers>
 
 <libs>
-check/source.${new_version_norm}/lib/
+check/source.${new_version_norm}/src/
 </libs>
 
 <include_paths>
