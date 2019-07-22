@@ -1,5 +1,5 @@
 Source: ngcp-libtcap
-Section: admin
+Section: libs
 Priority: optional
 Maintainer: Sipwise Development Team <support@sipwise.com>
 Homepage: https://www.sipwise.com/
