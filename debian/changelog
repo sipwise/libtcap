@@ -1,3 +1,18 @@
+ngcp-libtcap (7.5.1.0+0~mr7.5.1.0) unstable; urgency=medium
+
+  [ Alexander Lutay ]
+  * [f530a17] TT#60950 Switch libtcap docker to buster
+  * [22ba679] TT#60950 Improve libtcap docker image size
+
+  [ Guillem Jover ]
+  * [da7344c] TT#61954 Update copyright years
+  * [273976b] TT#63301 Change default from Section admin to libs
+  * [3cf1f2d] TT#61954 Set debhelper compat level in Build-Depends instead of debian/compat
+
+  [ Sipwise Jenkins Builder ]
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 05 Aug 2019 20:55:04 +0200
+
 ngcp-libtcap (7.5.0.0+0~mr7.5.0.0) unstable; urgency=medium
 
   * New release.
