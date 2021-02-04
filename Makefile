@@ -22,7 +22,6 @@ clean:
 	$(MAKE) -C asn1-compiled lib-clean
 	$(MAKE) -C src clean
 	$(MAKE) -C tests clean
-	rm -rf project.tgz cov-int
 
 install: all
 	mkdir -p $(DESTDIR)/$(HDR)
@@ -32,14 +31,4 @@ install: all
 	cp src/$(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSOVER)
 	ln -s $(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSO)
 
-coverity:
-	cov-build --dir cov-int $(MAKE)
-	tar -czf project.tgz cov-int
-	curl --form token=$(COVERITY_LIBTCAP_TOKEN) \
-		--form email=$(DEBEMAIL) \
-		--form file=@project.tgz \
-		--form version="$(LIBTCAP_VERSION)" \
-		--form description="automatic upload" \
-		https://scan.coverity.com/builds?project=$(COVERITY_LIBTCAP_PROJECT)
-
-.PHONY: all regenerate-asn1 clean install coverity
+.PHONY: all regenerate-asn1 clean install
