@@ -61,8 +61,10 @@ int tcap_encode(char **out, TCMessage_t *msg) {
 
 	fclose(fp);
 
-	if (ec.encoded == -1)
+	if (ec.encoded == -1) {
+		free(str);
 		return -1;
+	}
 
 	*out = str;
 	return len;
