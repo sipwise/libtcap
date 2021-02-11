@@ -1,0 +1,19 @@
+name: Cppcheck
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Get tool
+        run: sudo apt-get install -qq -y --no-install-recommends cppcheck
+
+      - name: Analyze
+        run: cppcheck -q --enable=all src
