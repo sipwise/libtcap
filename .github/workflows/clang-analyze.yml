@@ -1,0 +1,28 @@
+name: Clang Analyze
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+  steps:
+    - name: Checkout source
+      uses: actions/checkout@v2
+
+    - name: Get build dependencies
+      run: |
+        sudo apt-get install -qq -y --no-install-recommends clang-tools
+        sudo apt-get build-dep -qq -y .
+
+    - name: Analyze
+      run: |
+        scan-build -o clan-analyze/ make
+
+    - name: Store artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Clang Analyze results
+        path: clang-analyze/

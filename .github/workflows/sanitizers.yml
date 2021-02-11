@@ -1,0 +1,23 @@
+name: Sanitizers
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+  env:
+    FLAGS: -fsanitize=address -fsanitize=leak -fsanitize=undefined
+  steps:
+    - name: Checkout source
+      uses: actions/checkout@v2
+
+    - name: Get build dependencies
+      run: |
+        sudo apt-get build-dep -qq -y .
+
+    - name: Build with sanitizers enabled
+      run: |
+        make CFLAGS="$FLAGS" LDFLAGS="$FLAGS" test
