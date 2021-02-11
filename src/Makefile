@@ -1,6 +1,10 @@
 CC=gcc
-CFLAGS+=-I../asn1-compiled -I../include -g -Wall -O3 -fPIC
-LDFLAGS=-O3 -shared -fPIC -Wl,-soname,$(LIBNAME).so.$(VERSION)
+
+CPPFLAGS += -I../asn1-compiled -I../include
+CFLAGS := -g -Wall -O3
+CFLAGS += -fPIC
+LDFLAGS := -O3
+LDFLAGS += -shared -fPIC -Wl,-soname,$(LIBNAME).so.$(VERSION)
 
 OBJS=tcap.o
 
@@ -11,7 +15,7 @@ OBJS=tcap.o
 all: $(LIBSO)
 
 $(LIBSOVER): $(OBJS) ../asn1-compiled/libtcap-asn.a
-	$(CC) -o $@ $(OBJS) ../asn1-compiled/libtcap-asn.a $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) ../asn1-compiled/libtcap-asn.a $(LDFLAGS)
 
 $(LIBSO): $(LIBSOVER)
 	ln -fs $(LIBSOVER) $(LIBSO)

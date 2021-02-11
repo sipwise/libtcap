@@ -1,12 +1,13 @@
 .PHONY: all clean
 
-all: basic encode
+CPPFLAGS += -I ../include -I../asn1-compiled
+CFLAGS := -Wall -g
+LDFLAGS += -L../src
+LDLIBS += -ltcap
 
-basic: basic.c ../src/libtcap.so.0
-	gcc -Wall -g -I ../include -I../asn1-compiled basic.c -o basic -L../src -ltcap
+TESTS = basic encode
 
-encode: encode.c ../src/libtcap.so.0
-	gcc -Wall -g -I ../include -I../asn1-compiled encode.c -o encode -L../src -ltcap
+all: $(TESTS)
 
 clean:
-	rm -f basic encode
+	rm -f $(TESTS)
