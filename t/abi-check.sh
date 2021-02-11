@@ -53,6 +53,11 @@ if [ "${old_soversion}" != "${new_soversion}" ]; then
 fi
 
 # generate config files
+if [ -d "${CHECK_DIR}/source.${old_version_norm}/asn1-compiled" ]; then
+  old_asn1="asn1-compiled"
+else
+  old_asn1="asn1"
+fi
 cat > "${CHECK_DIR}/${old_version_norm}.xml" << EOF
 <version>
 check/source.${old_version_norm}
@@ -67,10 +72,15 @@ check/source.${old_version_norm}/src/
 </libs>
 
 <include_paths>
-check/source.${old_version_norm}/asn1-compiled
+check/source.${old_version_norm}/${old_asn1}
 </include_paths>
 EOF
 
+if [ -d "${CHECK_DIR}/source.${new_version_norm}/asn1-compiled" ]; then
+  new_asn1="asn1-compiled"
+else
+  new_asn1="asn1"
+fi
 cat > "${CHECK_DIR}/${new_version_norm}.xml" << EOF
 <version>
 check/source.${new_version_norm}
@@ -85,7 +95,7 @@ check/source.${new_version_norm}/src/
 </libs>
 
 <include_paths>
-check/source.${new_version_norm}/asn1-compiled
+check/source.${new_version_norm}/${new_asn1}
 </include_paths>
 EOF
 

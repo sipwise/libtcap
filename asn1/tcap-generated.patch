@@ -1,0 +1,79 @@
+diff --git a/constr_CHOICE.c b/constr_CHOICE.c
+index a9eb719..f0b5383 100644
+--- a/constr_CHOICE.c
++++ b//constr_CHOICE.c
+@@ -671,7 +671,6 @@ CHOICE_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
+ 			case -1:
+ 				ctx->phase = 5;
+ 				RETURN(RC_FAIL);
+-				continue;
+ 			case 1:
+ 				ctx->phase = 3;
+ 				/* Fall through */
+@@ -1033,12 +1033,14 @@ CHOICE_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
+ 
+ void
+ CHOICE_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
+-	asn_CHOICE_specifics_t *specs = (asn_CHOICE_specifics_t *)td->specifics;
++	asn_CHOICE_specifics_t *specs;
+ 	int present;
+ 
+ 	if(!td || !ptr)
+ 		return;
+ 
++	specs = (asn_CHOICE_specifics_t *)td->specifics;
++
+ 	ASN_DEBUG("Freeing %s as CHOICE", td->name);
+ 
+ 	/*
+diff --git a/per_encoder.c b/per_encoder.c
+index e76ef74..d7aae4f 100644
+--- a/per_encoder.c
++++ b/per_encoder.c
+@@ -123,7 +123,7 @@ uper_encode_internal(asn_TYPE_descriptor_t *td, asn_per_constraints_t *constrain
+ 	/*
+ 	 * Invoke type-specific encoder.
+ 	 */
+-	if(!td || !td->uper_encoder)
++	if(!(td && td->uper_encoder))
+ 		ASN__ENCODE_FAILED;	/* PER is not compiled in */
+ 
+ 	po.buffer = po.tmpspace;
+diff --git a/per_opentype.c b/per_opentype.c
+index 03a31d2..da26841 100644
+--- a/per_opentype.c
++++ b/per_opentype.c
+@@ -65,7 +65,8 @@ uper_open_type_get_simple(asn_codec_ctx_t *ctx, asn_TYPE_descriptor_t *td,
+ 	asn_per_data_t spd;
+ 	size_t padding;
+ 
+-	ASN__STACK_OVERFLOW_CHECK(ctx);
++	if(ASN__STACK_OVERFLOW_CHECK(ctx))
++		ASN__DECODE_FAILED;
+ 
+ 	ASN_DEBUG("Getting open type %s...", td->name);
+ 
+@@ -138,7 +139,8 @@ uper_open_type_get_complex(asn_codec_ctx_t *ctx, asn_TYPE_descriptor_t *td,
+ 	asn_dec_rval_t rv;
+ 	ssize_t padding;
+ 
+-	ASN__STACK_OVERFLOW_CHECK(ctx);
++	if(ASN__STACK_OVERFLOW_CHECK(ctx))
++		ASN__DECODE_FAILED;
+ 
+ 	ASN_DEBUG("Getting open type %s from %s", td->name,
+ 		per_data_string(pd));
+diff --git a/per_support.c b/per_support.c
+index 2481fff..4bd6318 100644
+--- a/per_support.c
++++ b/per_support.c
+@@ -394,8 +394,8 @@ per_put_few_bits(asn_per_outp_t *po, uint32_t bits, int obits) {
+ 		buf[2] = bits >> 8,
+ 		buf[3] = bits;
+-	else {
++	else if(obits >= 24) { /* probably a coverity false positive */
+ 		per_put_few_bits(po, bits >> (obits - 24), 24);
+ 		per_put_few_bits(po, bits, obits - 24);
+ 	}
+ 
+ 	ASN_DEBUG("[PER out %u/%x => %02x buf+%ld]",

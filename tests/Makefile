@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-CPPFLAGS += -I ../include -I../asn1-compiled
+CPPFLAGS += -I ../include -I../asn1
 CFLAGS := -Wall -g
 LDFLAGS += -L../src
 LDLIBS += -ltcap

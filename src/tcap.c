@@ -101,7 +101,7 @@ int tcap_encode_with_routing(char **out, const uint8_t *routing, size_t routing_
 
 	cmp.present = Component_PR_invoke;
 	cmp.choice.invoke.opCode.present = OPERATION_PR_localValue;
-	asn_long2INTEGER(&cmp.choice.invoke.opCode.choice.localValue, 20); // connect
+	cmp.choice.invoke.opCode.choice.localValue = 20; // connect
 
 	cpn_arr = &cpn;
 	ca.destinationRoutingAddress.list.count = 1;
@@ -112,8 +112,6 @@ int tcap_encode_with_routing(char **out, const uint8_t *routing, size_t routing_
 	ret = tcap_encode(out, &msg);
 
 	asn_DEF_ANY.free_struct(&asn_DEF_ANY, cmp.choice.invoke.parameter, 0);
-	//asn_DEF_INTEGER.free_struct(&asn_DEF_INTEGER, &cmp.choice.invoke.opCode.choice.localValue, 0);
-	free(cmp.choice.invoke.opCode.choice.localValue.buf);
 
 	return ret;
 }
@@ -142,8 +140,7 @@ static void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **type) {
 	if (invoke->opCode.present != OPERATION_PR_localValue)
 		goto nothing;
 
-	if (asn_INTEGER2long(&invoke->opCode.choice.localValue, &opcode))
-		goto nothing;
+	opcode = invoke->opCode.choice.localValue;
 
 	if (opcode >= ARRAY_SIZE(opcode_type_map))
 		goto nothing;

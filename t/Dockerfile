@@ -5,11 +5,12 @@ FROM docker.mgm.sipwise.com/sipwise-buster:latest
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2019-06-28
+ENV REFRESHED_AT 2021-02-16
 
 RUN apt-get update && \
     apt-get install --assume-yes \
       abi-compliance-checker \
+      asn1c \
       git \
       && \
     apt-get clean

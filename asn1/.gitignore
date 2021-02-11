@@ -1,1 +1,6 @@
 *.sw?
+*.h
+*.c
+*.o
+*.a
+Makefile.am.sample
