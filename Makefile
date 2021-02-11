@@ -18,6 +18,9 @@ regenerate-asn1:
 	(cd asn1-compiled && asn1c -fskeletons-copy ../asn1/tcap.asn)
 	ln -s ../asn1/Makefile.compiled asn1-compiled/Makefile
 
+test: all
+	$(MAKE) -C tests test
+
 clean:
 	$(MAKE) -C asn1-compiled lib-clean
 	$(MAKE) -C src clean
