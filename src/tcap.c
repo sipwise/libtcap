@@ -9,14 +9,15 @@
 #include "asn_SEQUENCE_OF.h"
 #include "constr_CHOICE.h"
 
-#include "TCMessage.h"
-#include "Invoke.h"
-#include "InitialDPArg.h"
+#include "CalledPartyNumber.h"
+#include "Component.h"
+#include "ComponentPortion.h"
 #include "ConnectArg.h"
 #include "FurnishChargingInformationArg.h"
 #include "INTEGER.h"
-#include "ComponentPortion.h"
-#include "Component.h"
+#include "InitialDPArg.h"
+#include "Invoke.h"
+#include "TCMessage.h"
 
 
 
@@ -68,6 +69,53 @@ int tcap_encode(char **out, TCMessage_t *msg) {
 
 	*out = str;
 	return len;
+}
+
+int tcap_encode_with_routing(char **out, const uint8_t *routing, size_t routing_len) {
+	int ret;
+	TCMessage_t msg;
+	ComponentPortion_t cp;
+	Component_t *cmp_arr;
+	Component_t cmp;
+	ConnectArg_t ca;
+	CalledPartyNumber_t *cpn_arr;
+	CalledPartyNumber_t cpn;
+
+	// init first
+	memset(&msg, 0, sizeof(msg));
+	memset(&cp, 0, sizeof(cp));
+	memset(&cmp, 0, sizeof(cmp));
+	memset(&ca, 0, sizeof(ca));
+	memset(&cpn, 0, sizeof(cpn));
+
+	cpn.buf = (uint8_t *)routing;
+	cpn.size = routing_len;
+
+	// fill structs
+	msg.present = TCMessage_PR_begin;
+	msg.choice.begin.components = &cp;
+
+	cmp_arr = &cmp;
+	cp.list.count = 1;
+	cp.list.array = &cmp_arr;
+
+	cmp.present = Component_PR_invoke;
+	cmp.choice.invoke.opCode.present = OPERATION_PR_localValue;
+	asn_long2INTEGER(&cmp.choice.invoke.opCode.choice.localValue, 20); // connect
+
+	cpn_arr = &cpn;
+	ca.destinationRoutingAddress.list.count = 1;
+	ca.destinationRoutingAddress.list.array = &cpn_arr;
+
+	cmp.choice.invoke.parameter = ANY_new_fromType(&asn_DEF_ConnectArg, &ca);
+
+	ret = tcap_encode(out, &msg);
+
+	asn_DEF_ANY.free_struct(&asn_DEF_ANY, cmp.choice.invoke.parameter, 0);
+	//asn_DEF_INTEGER.free_struct(&asn_DEF_INTEGER, &cmp.choice.invoke.opCode.choice.localValue, 0);
+	free(cmp.choice.invoke.opCode.choice.localValue.buf);
+
+	return ret;
 }
 
 TCMessage_t *tcap_decode(const char *buf, size_t len) {

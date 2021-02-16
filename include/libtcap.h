@@ -1,6 +1,8 @@
 #ifndef _LIBTCAP_H_
 #define _LIBTCAP_H_
 
+#include <stddef.h>
+#include <stdint.h>
 
 #include "TCMessage.h"
 #include "Invoke.h"
@@ -19,6 +21,7 @@ static inline void output_buffer_init(struct output_buffer *o, char *i, size_t s
 	o->used = 0;
 }
 
+int tcap_encode_with_routing(char **out, const uint8_t *routing, size_t routing_len);
 
 
 TCMessage_t *tcap_decode(const char *buf, size_t len);
