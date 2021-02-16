@@ -43,6 +43,15 @@ cp -r "${source_path}"/.git "${CHECK_DIR}/source.$new_version_norm"
   mkdir -p lib
   make
 )
+
+old_soversion="$(grep VERSION= "${CHECK_DIR}/source.$old_version_norm/Makefile")"
+new_soversion="$(grep VERSION= "${CHECK_DIR}/source.$new_version_norm/Makefile")"
+
+if [ "${old_soversion}" != "${new_soversion}" ]; then
+  echo "The SOVERSION is different, skipping API/ABI tests."
+  exit 0
+fi
+
 # generate config files
 cat > "${CHECK_DIR}/${old_version_norm}.xml" << EOF
 <version>
