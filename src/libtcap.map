@@ -1,0 +1,11 @@
+LIBTCAP_1 {
+global:
+	tcap_encode_with_routing;
+	tcap_extract;
+	inap_extract;
+	isup_convert_number;
+	isup_convert_number_hex;
+
+local:
+	*;
+};

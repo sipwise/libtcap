@@ -1,5 +1,5 @@
 export LIBNAME=libtcap
-export VERSION=0
+export VERSION=1
 export LIBSO=$(LIBNAME).so
 export LIBSOVER=$(LIBNAME).so.$(VERSION)
 
@@ -29,7 +29,6 @@ clean:
 install: all
 	mkdir -p $(DESTDIR)/$(HDR)
 	cp include/*.h $(DESTDIR)/$(HDR)
-	cp asn1-compiled/*.h $(DESTDIR)/$(HDR)
 	mkdir -p $(DESTDIR)/$(LIBDIR)
 	cp src/$(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSOVER)
 	ln -s $(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSO)

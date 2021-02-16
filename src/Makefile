@@ -5,6 +5,7 @@ CFLAGS := -g -Wall -O3
 CFLAGS += -fPIC
 LDFLAGS := -O3
 LDFLAGS += -shared -fPIC -Wl,-soname,$(LIBNAME).so.$(VERSION)
+LDFLAGS += -Wl,--version-script=libtcap.map
 
 OBJS=tcap.o
 

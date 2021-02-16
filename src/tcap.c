@@ -48,7 +48,7 @@ static int buf_append(const void *buffer, size_t size, void *app_key) {
 	return (ret == 1) ? 0 : -1;
 }
 
-int tcap_encode(char **out, TCMessage_t *msg) {
+static int tcap_encode(char **out, TCMessage_t *msg) {
 	FILE *fp;
 	char *str;
 	size_t len;
@@ -118,7 +118,7 @@ int tcap_encode_with_routing(char **out, const uint8_t *routing, size_t routing_
 	return ret;
 }
 
-TCMessage_t *tcap_decode(const char *buf, size_t len) {
+static TCMessage_t *tcap_decode(const char *buf, size_t len) {
 	TCMessage_t *ret = NULL;
 	asn_dec_rval_t rv;
 
@@ -131,7 +131,7 @@ TCMessage_t *tcap_decode(const char *buf, size_t len) {
 	return NULL;
 }
 
-void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **type) {
+static void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **type) {
 	long opcode;
 	int rv;
 	void *arg = 0;

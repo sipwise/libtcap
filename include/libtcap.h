@@ -4,11 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "TCMessage.h"
-#include "Invoke.h"
-#include "constr_TYPE.h"
-
-
 struct output_buffer {
 	char *buf;
 	size_t buf_size;
@@ -23,15 +18,9 @@ static inline void output_buffer_init(struct output_buffer *o, char *i, size_t s
 
 int tcap_encode_with_routing(char **out, const uint8_t *routing, size_t routing_len);
 
-
-TCMessage_t *tcap_decode(const char *buf, size_t len);
-void *inap_decode(Invoke_t *invoke, asn_TYPE_descriptor_t **);
 int tcap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out);
 int inap_extract(const char *buf, size_t len, const char *spec, struct output_buffer *out);
 int isup_convert_number(const char *inp, int inlen, char *out);
 int isup_convert_number_hex(const char *inp, int inlen, char *out);
-
-int tcap_encode(char **out, TCMessage_t *msg);
-
 
 #endif
