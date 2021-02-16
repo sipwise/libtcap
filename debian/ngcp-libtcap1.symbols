@@ -1,0 +1,7 @@
+libtcap.so.1 ngcp-libtcap1 #MINVER#
+ LIBTCAP_1@LIBTCAP_1 9.4.0.0+0~mr9.4.0.0
+ inap_extract@LIBTCAP_1 9.4.0.0+0~mr9.4.0.0
+ isup_convert_number@LIBTCAP_1 9.4.0.0+0~mr9.4.0.0
+ isup_convert_number_hex@LIBTCAP_1 9.4.0.0+0~mr9.4.0.0
+ tcap_encode_with_routing@LIBTCAP_1 9.4.0.0+0~mr9.4.0.0
+ tcap_extract@LIBTCAP_1 9.4.0.0+0~mr9.4.0.0
