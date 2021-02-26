@@ -397,7 +397,7 @@ static inline char phone_digit(unsigned char d) {
 static inline char phone_digit_hex(unsigned char d) {
 	if (d <= 9)
 		return '0' + d;
-	else if (d >= 10 && d <= 15)
+	else if (d <= 15)
 		return 'A' + d - 10;
 	return '?';
 }
