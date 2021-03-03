@@ -262,7 +262,7 @@ found_member:
 		}
 
 		type = member->type;
-		element = element + member->memb_offset;
+		element = (char *)element + member->memb_offset;
 		if (element && (member->flags & ATF_POINTER))
 			element = *((void **) element);
 		if (!element)
