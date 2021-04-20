@@ -1,3 +1,16 @@
+ngcp-libtcap (9.4.1.0+0~mr9.4.1.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [8d9d957] TT#111150 Add new tcap_encode_with_routing() function
+  * [c624c61] TT#111150 Prepare abi-check for SOVERSION bump
+  * [2e515dd] TT#111150 Stop exposing ASN1C symbols
+  * [9a2f1f6] TT#111150 Add a dpkg symbols file
+  * [ee25d74] TT#111150 Remove generated ASN1C files
+  * [956706f] TT#111150 Remove range check that is always true in phone_digit_hex()
+  * [8d75175] TT#111150 Do not perform arithmetic on void pointers
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 20 Apr 2021 11:57:20 +0200
+
 ngcp-libtcap (9.4.0.0+0~mr9.4.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
