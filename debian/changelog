@@ -1,3 +1,10 @@
+ngcp-libtcap (10.0.0.0+0~mr10.0.0.0) unstable; urgency=medium
+
+  [ Manuel Montecelo ]
+  * [92bd0c8] TT#118659 Switch Dockerfile from Debian buster to bullseye
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 14 Jun 2021 16:36:05 +0200
+
 ngcp-libtcap (9.5.0.0+0~mr9.5.0.0) unstable; urgency=medium
 
   [ Guillem Jover ]
