@@ -3,10 +3,10 @@ Section: libs
 Priority: optional
 Maintainer: Sipwise Development Team <support@sipwise.com>
 Homepage: https://www.sipwise.com/
-Standards-Version: 3.9.8
+Standards-Version: 4.5.1
 Build-Depends:
  asn1c,
- debhelper-compat (= 12),
+ debhelper-compat (= 13),
 
 Package: ngcp-libtcap1
 Architecture: any
