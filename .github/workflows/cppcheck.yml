@@ -6,14 +6,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
 
       - name: Get tool
-        run: sudo apt-get install -qq -y --no-install-recommends cppcheck
+        run: sudo apt-get install -q -y --no-install-recommends cppcheck
 
       - name: Analyze
         run: cppcheck -q --enable=all src

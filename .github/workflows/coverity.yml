@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     env:
       COVERITY_SCAN_TOKEN: ${{ secrets.COVERITY_SCAN_TOKEN }}
@@ -22,8 +22,10 @@ jobs:
 
       - name: Get build dependencies
         run: |
-          sudo apt-get install -qq -y --no-install-recommends git ca-certificates curl
-          sudo apt-get build-dep -qq -y .
+          # note: debhelper v13 isn't available from ubuntu-20.04 yet, we need a backport
+          sudo apt-add-repository -y ppa:ubuntu-cloud-archive/yoga-staging
+          sudo apt-get install -q -y --no-install-recommends git ca-certificates curl
+          sudo apt-get build-dep -q -y .
 
       - name: Get coverity scan
         run: |
