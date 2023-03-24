@@ -36,6 +36,16 @@ if [ -z "${branch:-}" ] ; then
   branch="none"
 fi
 
+# only run inside docker environments as root user
+if [ -f /.dockerenv ] && [[ "$(id -u)" == "0" ]] ; then
+  # the environment passed to docker might claim to have
+  # /var/lib/jenkins for $HOME, but we might be running
+  # under user root, so ensure the ~/.gitconfig can be found
+  # at the appropriate place
+  echo "Fixing HOME for user root (changing from '${HOME}' to '/root')"
+  export HOME=/root/
+fi
+
 if [[ "${release}" =~ ^release-mr ]] ; then
   echo "release detected"
   short_release=${release%%-update}
