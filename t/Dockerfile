@@ -5,7 +5,7 @@ FROM docker.mgm.sipwise.com/sipwise-buster:latest
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2019-06-28
+ENV REFRESHED_AT 2023-12-05
 
 RUN apt-get update && \
     apt-get install --assume-yes \
@@ -15,6 +15,8 @@ RUN apt-get update && \
     apt-get clean
 
 RUN echo './t/testrunner' >>/root/.bash_history
+
+RUN git config --global --add safe.directory /code
 
 WORKDIR /code/
 
