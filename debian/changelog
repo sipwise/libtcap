@@ -1,3 +1,10 @@
+ngcp-libtcap (11.4.1.0+0~mr11.4.1.0) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [52e3b66] MT#56935 Docker/testrunner: adjust setup for new safe.directory behavior of git
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 26 Jun 2023 14:10:09 +0200
+
 ngcp-libtcap (11.4.0.0+0~mr11.4.0.0) unstable; urgency=medium
 
   * New release.
