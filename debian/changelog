@@ -1,3 +1,10 @@
+ngcp-libtcap (11.4.1.1+0~mr11.4.1.1) unstable; urgency=medium
+
+  [ Mykola Malkov ]
+  * [8d15136] MT#57453 Switch docker image to bookworm
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 11 Jul 2023 17:50:16 +0200
+
 ngcp-libtcap (11.4.1.0+0~mr11.4.1.0) unstable; urgency=medium
 
   [ Michael Prokop ]
