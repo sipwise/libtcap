@@ -2,7 +2,10 @@
 # Uncomment this to turn on verbose mode.
 # export DH_VERBOSE=1
 
+include /usr/share/dpkg/architecture.mk
+
 export PREFIX = /usr
+export LIBDIR = /usr/lib/$(DEB_HOST_MULTIARCH)
 
 %:
 	dh $@
