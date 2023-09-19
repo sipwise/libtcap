@@ -27,9 +27,9 @@ clean:
 
 install: all
 	mkdir -p $(DESTDIR)$(HDRDIR)
-	cp include/*.h $(DESTDIR)$(HDRDIR)
+	install include/*.h $(DESTDIR)$(HDRDIR)
 	mkdir -p $(DESTDIR)$(LIBDIR)
-	cp src/$(LIBSONAME) $(DESTDIR)$(LIBDIR)
+	install src/$(LIBSONAME) $(DESTDIR)$(LIBDIR)
 	ln -s $(LIBSONAME) $(DESTDIR)$(LIBDIR)/$(LIBSO)
 
 .PHONY: all regenerate-asn1 clean install
