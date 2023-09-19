@@ -44,8 +44,8 @@ cp -r "${source_path}"/.git "${CHECK_DIR}/source.$new_version_norm"
   make
 )
 
-old_soversion="$(grep VERSION= "${CHECK_DIR}/source.$old_version_norm/Makefile")"
-new_soversion="$(grep VERSION= "${CHECK_DIR}/source.$new_version_norm/Makefile")"
+old_soversion="$(sed -ne 's/^VERSION *= *//p' "${CHECK_DIR}/source.$old_version_norm/Makefile")"
+new_soversion="$(sed -ne 's/^VERSION *= *//p' "${CHECK_DIR}/source.$new_version_norm/Makefile")"
 
 if [ "${old_soversion}" != "${new_soversion}" ]; then
   echo "The SOVERSION is different, skipping API/ABI tests."

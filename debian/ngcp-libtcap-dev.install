@@ -1,2 +1,2 @@
-debian/tmp/include/tcap /usr/include/
-debian/tmp/lib/*.so /usr/lib/
+debian/tmp/usr/include/tcap /usr/include/
+debian/tmp/usr/lib/*.so /usr/lib/

@@ -1,12 +1,12 @@
-export LIBNAME=libtcap
-export VERSION=1
-export LIBSO=$(LIBNAME).so
-export LIBSOVER=$(LIBNAME).so.$(VERSION)
+export LIBNAME = libtcap
+export VERSION = 1
+export LIBSO = $(LIBNAME).so
+export LIBSONAME = $(LIBSO).$(VERSION)
 
-LIBDIR=lib
-HDR=include/tcap
+PREFIX ?= /usr/local
+HDRDIR ?= $(PREFIX)/include/tcap
+LIBDIR ?= $(PREFIX)/lib
 
-DESTDIR?=/usr/local
 
 all:
 	$(MAKE) -C asn1
@@ -26,10 +26,10 @@ clean:
 	$(MAKE) -C tests clean
 
 install: all
-	mkdir -p $(DESTDIR)/$(HDR)
-	cp include/*.h $(DESTDIR)/$(HDR)
-	mkdir -p $(DESTDIR)/$(LIBDIR)
-	cp src/$(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSOVER)
-	ln -s $(LIBSOVER) $(DESTDIR)/$(LIBDIR)/$(LIBSO)
+	mkdir -p $(DESTDIR)$(HDRDIR)
+	cp include/*.h $(DESTDIR)$(HDRDIR)
+	mkdir -p $(DESTDIR)$(LIBDIR)
+	cp src/$(LIBSONAME) $(DESTDIR)$(LIBDIR)
+	ln -s $(LIBSONAME) $(DESTDIR)$(LIBDIR)/$(LIBSO)
 
 .PHONY: all regenerate-asn1 clean install
