@@ -18,7 +18,10 @@ int main() {
 	if (ret < 0) {
 		fprintf(stderr, "failed to encode tcap\n");
 	} else {
-		fwrite(buf, ret, 1, stdout);
+		printf("buffer: ");
+		for (int i = 0; i < ret; i++)
+			printf("0x%02x ", (unsigned char)buf[i]);
+		printf("\n");
 	}
 
 	free(buf);

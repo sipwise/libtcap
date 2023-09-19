@@ -15,6 +15,13 @@ const char tcap[] = {
 //const int tcap_len = sizeof(tcap) - 1;
 const int tcap_len = sizeof(tcap);
 
+static void print_outbuf(const char *desc, int ret, struct output_buffer *out)
+{
+	printf("%s: returned %i, value: ", desc, ret);
+	for (int i = 0; i < out->used; i++)
+		printf("%#02x ", out->buf[i]);
+	printf("\n");
+}
 
 int main() {
 	int i;
@@ -23,27 +30,27 @@ int main() {
 
 //	OUTPUT_BUFFER_INIT(&out, buf);
 //	i = tcap_extract(tcap, tcap_len, "end.components.1.invoke.opCode.localValue", &out);
-//	printf("tcap_extract opcode: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+//	print_outbuf("tcap_extract opcode", i, &out);
 //
 //	OUTPUT_BUFFER_INIT(&out, buf);
 //	i = inap_extract(tcap, tcap_len, "ConnectArg", &out);
-//	printf("inap_extract ConnectArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+//	print_outbuf("inap_extract ConnectArg", i, &out);
 //
 //	OUTPUT_BUFFER_INIT(&out, buf);
 //	i = inap_extract(tcap, tcap_len, "ConnectArg.cutAndPaste", &out);
-//	printf("inap_extract ConnectArg.cutAndPaste: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+//	print_outbuf("inap_extract ConnectArg.cutAndPaste", i, &out);
 //
 //	OUTPUT_BUFFER_INIT(&out, buf);
 //	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress", &out);
-//	printf("inap_extract ConnectArg.destinationRoutingAddress: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+//	print_outbuf("inap_extract ConnectArg.destinationRoutingAddress", i, &out);
 //
 	OUTPUT_BUFFER_INIT(&out, buf);
 	i = inap_extract(tcap, tcap_len, "ConnectArg.destinationRoutingAddress.0", &out);
-	printf("inap_extract ConnectArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+	print_outbuf("inap_extract ConnectArg", i, &out);
 
 //	OUTPUT_BUFFER_INIT(&out, buf);
 //	i = inap_extract(tcap, tcap_len, "InitialDPArg.calledPartyNumber", &out);
-//	printf("inap_extract InitialDPArg: returned %i, value %.*s\n", i, (int) out.used, out.buf);
+//	print_outbuf("inap_extract InitialDPArg", i, &out);
 
 	return 0;
 }
