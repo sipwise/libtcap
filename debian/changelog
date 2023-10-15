@@ -1,3 +1,17 @@
+ngcp-libtcap (12.1.0.0+0~mr12.1.0.0) unstable; urgency=medium
+
+  [ Guillem Jover ]
+  * [8b036fe] MT#58307 debian: Set Rules-Requires-Root to no
+  * [97aaf60] MT#58307 debian: Ignore debian/tmp/ in git
+  * [f71a0c4] MT#58307 test: Do not print binary garbage to stdout
+  * [5f8c1ae] MT#58307 build: Normalize variable handling
+  * [2bd6a88] MT#58307 build: Use install instead of cp
+  * [2ec4169] MT#58307 debian: Simplify debhelper install fragments
+  * [1d0cbab] MT#58307 debian: Install shared libraries into multi-arch directories
+  * [8868df3] MT#58356 Update packaging for bookworm
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Sun, 15 Oct 2023 08:23:21 +0200
+
 ngcp-libtcap (12.0.1.0+0~mr12.0.1.0) unstable; urgency=medium
 
   [ Mykola Malkov ]
