@@ -1,3 +1,10 @@
+ngcp-libtcap (13.2.1.0+0~mr13.2.1.0) unstable; urgency=medium
+
+  [ Michael Prokop ]
+  * [89c5e8a] MT#61451 GH: raise workflow actions to v4
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Tue, 28 Jan 2025 15:14:18 +0100
+
 ngcp-libtcap (13.2.0.0+0~mr13.2.0.0) unstable; urgency=medium
 
   * New release.
