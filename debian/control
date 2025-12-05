@@ -1,13 +1,11 @@
 Source: ngcp-libtcap
 Section: libs
-Priority: optional
 Maintainer: Sipwise Development Team <support@sipwise.com>
 Homepage: https://www.sipwise.com/
-Standards-Version: 4.6.2
-Rules-Requires-Root: no
+Standards-Version: 4.7.2
 Build-Depends:
- asn1c,
  debhelper-compat (= 13),
+ asn1c,
 
 Package: ngcp-libtcap1
 Architecture: any
