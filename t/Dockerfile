@@ -1,11 +1,11 @@
-# DOCKER_NAME=libtcap-bookworm
-FROM docker.mgm.sipwise.com/sipwise-bookworm:latest
+# DOCKER_NAME=libtcap-trixie
+FROM docker.mgm.sipwise.com/sipwise-trixie:latest
 
 # Important! Update this no-op ENV variable when this Dockerfile
 # is updated with the current date. It will force refresh of all
 # of the base images and things like `apt-get update` won't be using
 # old cached versions when the Dockerfile is built.
-ENV REFRESHED_AT 2023-06-26
+ENV REFRESHED_AT 2025-12-30
 
 RUN apt-get update && \
     apt-get install --assume-yes \
@@ -25,12 +25,12 @@ WORKDIR /code/
 # Instructions for usage
 # ----------------------
 # When you want to build the base image from scratch (jump to the next section if you don't want to build yourself!):
-# % docker build --tag="libtcap-bookworm" .
-# % docker run --rm -i -t -v $(pwd)/..:/code:rw libtcap-bookworm:latest bash
+# % docker build --tag="libtcap-trixie" .
+# % docker run --rm -i -t -v $(pwd)/..:/code:rw libtcap-trixie:latest bash
 #
 # Use the existing docker image:
-# % docker pull docker.mgm.sipwise.com/libtcap-bookworm
-# % docker run --rm -i -t -v $(pwd)/..:/code:rw docker.mgm.sipwise.com/libtcap-bookworm:latest bash
+# % docker pull docker.mgm.sipwise.com/libtcap-trixie
+# % docker run --rm -i -t -v $(pwd)/..:/code:rw docker.mgm.sipwise.com/libtcap-trixie:latest bash
 #
 # Inside docker (the command is in history, just press UP button):
 #   ./t/testrunner
