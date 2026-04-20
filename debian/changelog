@@ -1,3 +1,9 @@
+ngcp-libtcap (26.0.1.0+0~mr26.0.1.0) unstable; urgency=medium
+
+  * New release.
+
+ -- Sipwise Jenkins Builder <jenkins@sipwise.com>  Mon, 20 Apr 2026 10:30:30 +0200
+
 ngcp-libtcap (26.0.0.0+0~mr26.0.0.0) unstable; urgency=medium
 
   * New release.
